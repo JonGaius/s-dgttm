@@ -1,0 +1,101 @@
+.sigepec-card__module{
+    position: relative;
+    height: 180px;
+    background: $sigepec-color-white;
+    border: 0.25px solid rgba($color: #000000, $alpha: .2);
+    @extend %flex-center;
+    row-gap: 10px;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.5s ease;
+    cursor: pointer;
+    svg{
+        width: 50px;
+        height: 50px;
+    }
+    &:hover{
+        background: $sigepec-color-primaryAccent;
+        border: 0.25px solid rgba($color: $sigepec-color-primaryHover, $alpha: 1);
+    }
+}
+.sigepec-module-dossier-add-step__item{
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    background: $sigepec-color-background;
+    border-radius: 5px;
+    @extend %flex-vertical-center;
+    column-gap: 5px;
+    &.is--onloading{
+        background: #fff7e8;
+    }
+    &.is--success{
+        background: #c5ffef;
+    }
+    &.is--error{
+        background: #ffcdd3;
+    }
+}
+.sigepec-module-add-file__box{
+    position: relative;
+    background: $sigepec-color-background;
+    padding: 10px;
+    align-items: center;
+    border-radius: 5px;
+
+    .sigepec-module-add-file-text__result{
+        align-items: center;
+        margin-top: 5px;
+        span{
+            font-size: 12pt;
+            color: $sigepec-color-primaryHover;
+        }
+        svg{
+            width: 20px;
+            height: 20px;
+            #fill_color{
+                fill: $sigepec-color-primaryHover;
+            }
+            #stroke_color{
+                stroke: $sigepec-color-primaryHover;
+            }
+        }
+    }
+}
+.sigepec-tag{
+    padding: 5px 10px;
+    text-align: center;
+    background: $sigepec-color-background;
+    border: 0.25px solid rgba($color: #000000, $alpha: .2);
+    border-radius: 50px;
+    &.is--success{
+        background: $sigepec-color-primaryAccent;
+        border: 0.25px solid rgba($color: $sigepec-color-primaryHover, $alpha: .2);
+    }
+    &.is--warning{
+        background: $sigepec-color-warningAccent;
+        border: 0.25px solid rgba($color: $sigepec-color-warning, $alpha: .2);
+    }
+    &.is--error{
+        background: $sigepec-color-dangerAccent;
+        border: 0.25px solid rgba($color: $sigepec-color-danger, $alpha: .2);
+    }
+    &.is--info{
+        background: $sigepec-color-infoAccent;
+        border: 0.25px solid rgba($color: $sigepec-color-info, $alpha: .2);
+    }
+}
+.sigepec-fil-darianne{
+    gap: 5px;
+    flex-wrap: wrap;
+    margin: 10px 0;
+    a, span{
+        font-size: 12pt;
+    }
+    span{
+        color: $sigepec-color-primaryHover;
+        font-weight: $sigepec-font-medium;
+    }
+}

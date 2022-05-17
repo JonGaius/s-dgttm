@@ -1,0 +1,42 @@
+.sigepec-home{
+    position: relative;
+    .sigepec-home__title{
+        margin-bottom: 10px;
+        h1{
+            font-size: 4vw;
+        }
+    }
+    .sigepec-home__modules{
+        position: relative;
+        width: 100%;
+
+        strong{
+            font-size: 18pt;
+        }
+        .sigepec-home-modules{
+            row-gap: 10px;
+            margin-top: 20px;
+            column-gap: 10px;
+        }
+        .sigepec-home-module{
+            width: calc(100% / 4 - 10px);
+        }
+    }
+   
+}
+.sigepec-module-dossier-list{
+    margin-top: 20px;
+    h2{
+        font-size: 24pt;
+    }
+}
+.sigepec-error__msg{
+    width: 100%;
+    height: 60vh;
+    @extend %flex-vertical-center;
+    h1{
+        font-size: 5rem;
+        text-transform: uppercase;
+        color: $sigepec-color-primaryHover;
+    }
+}

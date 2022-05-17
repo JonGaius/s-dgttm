@@ -1,0 +1,52 @@
+*, ::after, ::before{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: $sigepec-font-regular;
+    font-size: 14pt;
+    color: $sigepec-color-text;
+}
+::selection{
+    background: $sigepec-color-primary;
+    color: $sigepec-color-text;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+    &:hover{
+        // text-decoration: none;
+        color: $sigepec-color-primary;
+    }
+}
+strong{
+    font-family: $sigepec-font-medium;
+}
+h1,h2,h3,h4,h5{
+    font-family: $sigepec-font-bold;
+}
+body{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: $sigepec-color-background;
+    overflow-x: hidden;
+}
+.sigepec-h-bar{
+    width: 100%;
+    height: 0;
+    position: relative;
+    border: 0.025px solid rgba($color: #000000, $alpha: .125);
+    margin: 5px 0;
+}
+.sigepec-icon-option{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 2px;
+    .sigepec-icon-dot{
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #000000;
+    }
+}

@@ -1,0 +1,19 @@
+.has--flex_between{
+    display: flex;
+    justify-content: space-between;
+}
+.has--flex_around{
+    display: flex;
+    justify-content: space-around;
+}
+.has--flex_center{
+    display: flex;
+    justify-content: center;
+}
+.has--flex{
+    display: flex;
+    // justify-content: space-between;
+}
+.has--wrap{
+    flex-wrap: wrap;
+}

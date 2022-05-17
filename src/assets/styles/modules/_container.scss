@@ -1,0 +1,169 @@
+.is--large{
+    position: relative;
+    width: 100%;
+}
+.is--mid{
+    position: relative;
+    width: 50%;
+}
+.is--medium{
+    position: relative;
+    max-width: 912px;
+    margin: auto;
+}
+.is--small{
+    position: relative;
+    max-width: 414px;
+    margin: auto;
+}
+.is--max_btn{
+    max-width: 214px;
+}
+
+.sigepec-table{
+    position: relative;
+    width: 100%;
+    // height: 45px;
+    .sigepec-table__head,.sigepec-table__body{
+        position: relative;
+        width: 100%;
+        height: auto;
+        display: flex;
+        border: 0.25px solid rgba($color: #000000, $alpha: .25);
+        align-items: center;
+        justify-content: space-between;
+        background: $sigepec-color-white;
+    }
+    .is--little{
+        position: relative;
+        width: 40px;
+        @extend %flex-center;
+        text-align: center;
+    }
+    .is--lilmed{
+        position: relative;
+        width: 200px;
+    }
+    .is--lilmed2{
+        position: relative;
+        width: 220px;
+    }
+    .is--lilmed3{
+        position: relative;
+        width: 300px;
+    }
+    .is--auto{
+        position: relative;
+        width: calc(100% - (80px + 200px * 3));
+    }
+    .is--auto9{
+        position: relative;
+        width: calc(100% - (80px + 200px * 2));
+    }
+    .is--auto1{
+        position: relative;
+        width: calc(100% - (160px + 200px * 3));
+    }
+    .is--auto2{
+        position: relative;
+        width: 100%;
+    }
+    .is--auto4{
+        position: relative;
+        width: calc((100% - 80px) / 4);
+        // padding: 10px;
+    }
+    .is--auto5{
+        position: relative;
+        width: calc((100% - (40px + 200px + 300px )) / 2);
+        // padding: 10px;
+    }
+    .is--auto3{
+        position: relative;
+        width: calc(100%  - (80px + 300px * 2));
+    }
+    .is--auto5{
+        position: relative;
+        width: calc((100% - (220px + 80px)) / 3);
+    }
+    .is--auto7{
+        position: relative;
+        width: calc(100% - (200px * 3) - 80px - 220px);
+    }
+    .sigepec-table__column{
+        position: relative;
+        border-right: 0.25px solid rgba($color: #000000, $alpha: .25);
+        padding: 10px;
+        height: auto;
+        &:last-child{
+            border: none;
+        }
+        .sigepec-table__option{
+            position: absolute;
+            width: 200px;
+            height: auto;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            row-gap: 5px;
+            background-color: $sigepec-color-white;
+            border: 0.25px solid rgba($color: #000000, $alpha: .25);
+            border-radius: 5px;
+            top: 50%;
+            right: 0;
+            z-index: 2;
+            transform: translate(-15%, -50%);
+            display: none;
+            &.active{
+                display: block;
+            }
+            a, button{
+                display: block;
+                padding: 5px;
+                text-align: left;
+                cursor: pointer;
+                transition: 0.3s ease-in-out;
+                &:hover{
+                    color: $sigepec-color-primaryHover;
+                }
+            }
+        }
+    }
+    button{
+        background: none;
+        width: 100%;
+        height: 100%;
+        border: none;
+        cursor: pointer;
+    }
+
+
+    button.sigepec-tab-btn,
+    a.sigepec-tab-btn{
+        position: relative;
+        display: flex;
+        width: 100%;
+        column-gap: 5px;
+        align-items: center;
+        color: $sigepec-color-text;
+        fill: $sigepec-color-text;
+        stroke: $sigepec-color-text;
+        transition: all 0.25s ease;
+        #fill_color{
+            fill: inherit;
+        }
+        #stroke_color{
+            stroke: inherit;
+        }
+        &:hover{
+            color: $sigepec-color-primaryHover;
+            fill: $sigepec-color-primaryHover;
+            stroke: $sigepec-color-primaryHover;
+        }
+    }
+    .sigepec-table-column__special-span{
+        cursor: pointer;
+        width: 100%;
+        display: block;
+    }
+}

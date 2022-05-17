@@ -1,0 +1,356 @@
+.sigepec-module-dossier-accueil{
+    margin-top: 20px;
+    row-gap: 5px;
+    column-gap: 5px;
+}
+.sigepec-module-dossier-accueil__item{
+    width: calc(100% / 4 - 5px);
+}
+.sigepec-module-exam-accueil__item{
+    width: calc(100% / 3 - 5px);
+}
+.sigepec-module-dossier-list__head{
+    align-items: center;
+    
+    h1{
+        font-size: 24pt;
+    }
+    .sigepec-module-dossier-list__actions{
+        column-gap: 10px;
+        align-items: center;
+    }
+}
+.sigepec-module-dossier-list__search{
+    width: 420px;
+    height: 45px;
+    position: relative;
+    border-radius: 5px;
+    background: $sigepec-color-white;
+    // padding: 5px 15px;
+}
+.sigepec-module-dossier-list__container{
+    margin-top: 20px;
+}
+.sigepec-module-add{
+    margin-top: 30px;
+    h2{
+        font-size: 15pt;
+        font-family: $sigepec-font-medium;
+    }
+    .sigepec-module-add__step{
+        position: relative;
+        width: 340px;
+    }
+    .sigepec-module-add__step2{
+        position: relative;
+        width: 40%;
+    }
+    .sigepec-module-add__step3{
+        position: relative;
+        width: 50%;
+    }
+    .sigepec-module-add-step{
+        position: relative;
+        padding: 15px;
+        // height: 380px;
+        background: $sigepec-color-white;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+    .sigepec-module-add__form2{
+        position: relative;
+        padding: 15px;
+        width: calc(60% - 10px);
+        background: $sigepec-color-white;
+        border-radius: 10px;
+    }
+    .sigepec-module-add__form3{
+        position: relative;
+        // padding: 15px;
+        width: calc(50% - 10px);
+        // background: $sigepec-color-white;
+        border-radius: 10px;
+    }
+    .sigepec-module-add__form{
+        position: relative;
+        padding: 15px;
+        width: calc(100% - 350px);
+       
+        background: $sigepec-color-white;
+        border-radius: 10px;
+    }
+    .sigepec-module-add-step__list{
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 5px;
+    }
+}
+.sigepec-module-add-form__group{
+    column-gap: 10px;
+    margin-bottom: 10px;
+}
+.sigepec-module-add-form__action{
+    column-gap: 20px;
+    width: 65%;
+    margin-left: auto;
+    // align-items: flex-end;
+    margin-top: 40px;
+    
+}
+.sigepec-module-add-form__special{
+    align-items: center;
+    .sigepec-module-add-form-special{
+        position: relative;
+        width: auto;
+        column-gap: 10px;
+        button{
+            position: relative;
+            width: 120px;
+            height: 80px;
+            flex-direction: column;
+            padding: 10px;
+            @extend %flex-center;
+            font-size: 15pt;
+            cursor: pointer;
+            background: $sigepec-color-white;
+            border: 0.25px solid rgba($color: #000000, $alpha: .25);
+            border-radius: 5px;
+            transition: 0.3s ease;
+            &:hover{
+                background: $sigepec-color-primaryAccent;
+                border: 0.25px solid rgba($color: $sigepec-color-primaryHover, $alpha: .25);
+            }
+        }
+    }
+}
+.sigepec-module-add-form-special__head{
+    align-items: center;
+    column-gap: 10px;
+    cursor: pointer;
+   margin-top: 10px;
+   margin-bottom: 20px;
+}
+.sigepec-module-add-form__container{
+    flex-direction: column;
+    row-gap: 10px;
+}
+.is--two{
+    .sigepec-module-add__section:nth-child(2){
+        width: 60%;
+    }
+    .sigepec-module-add__section:nth-child(1){
+        width: calc(40% - 10px);
+    }
+}
+.sigepec-module-add__section{
+    &:nth-child(1){
+        width: 60%;
+    }
+    &:nth-child(2){
+        width: calc(40% - 10px);
+    }
+    .sigepec-module-add-section__container{
+        position: relative;
+        width: 100%;
+        padding: 20px;
+        background: $sigepec-color-white;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        h2{
+            font-size: 15pt;
+        }
+    }
+}
+.sigepec-module-add-apercu__items{
+    column-gap: 15px;
+    padding: 5px 0;
+}
+.sigepec-module-add-section__box{
+    margin-bottom: 20px;
+}
+.sigepec-module-add-apercu__btn{
+    margin-top: 10px;
+    button{
+        margin-left: auto;
+    }
+}
+.sigepec-module-add-files{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.sigepec-module-add__head{
+    margin-top: 20px;
+    align-items: center;
+    margin-bottom: -10px;
+    h1{
+        font-size: 35pt;
+    }
+}
+.sigepec-module-dossier-modal,
+.sigepec-module-dossier-mmodal{
+    position: relative;
+    width: 720px;
+}
+.sigepec-module-add-apercu-btn{
+    margin-top: 10px;
+    margin-left: auto;
+    width: auto;
+    column-gap: 10px;
+    align-items: center;
+    button{
+        width: 100%;
+    }
+}
+.sigepec-stats{
+    align-items: center;
+    margin-top: 30px;
+    .sigepec-stats__item{
+        align-items: center;
+        width: 200px;
+    }
+}
+.sigepec-module-add-step__checkbox{
+
+    row-gap: 10px;
+    column-gap: 10px;
+    .sigepec-module-add-step-checkbox{
+        width: calc(100% / 3 - 10px);
+    }
+}
+.sigepec-module-add-questionnaire__mark{
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+    .sigepec-module-add-questionnaire-mark{
+        position: relative;
+        width: 100%;
+        height: 50px;
+        button{
+            position: absolute;
+            top: 50%;
+            left: 0;
+            height: 50px;
+            width: 50px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            @extend %flex-center;
+            background: $sigepec-color-background;
+            border: none;
+            border-radius: 50%;
+            transition: 0.25s ease;
+            z-index: 3;
+            svg{
+                width: 30px;
+                height: 30px;
+            }
+            &:hover{
+                background: $sigepec-color-primaryAccent;
+            }
+        }
+        &::before{
+            @include pseudo-el;
+            top: 50%;
+            left: 55px;
+            width: calc(100% - 58px);
+            z-index: 1;
+            height: 0.5px;
+            background: rgba($color: #000000, $alpha: .25);
+        }
+    }
+    .sigepec-module-add-questionnaire-mark__type{
+        position: relative;
+        margin-left: 55px;
+        margin-top: -20px;
+        width: calc(100% - 60px);
+        padding: 10px;
+        border: 0.25px solid rgba($color: $sigepec-color-background, $alpha: 1);
+        border-radius: 5px;
+        display: none;
+        &.appear{
+            display: block
+        }
+        ul{
+            @extend %list-style-none;
+            li{
+                padding: 5px;
+                background: $sigepec-color-background;
+                margin-bottom: 5px;
+                border-radius: 5px;
+                transition: 0.3s ease;
+                button{
+                    cursor: pointer;
+                    width: 100%;
+                    height: 45px;
+                    text-align: left;
+                    @extend %flex-vertical-center;
+                    background: none;
+                    border: none;
+                }
+                &:hover{
+                    background: $sigepec-color-primaryAccent;
+                }
+            }
+        }
+    }
+}
+.sigepec-module-add-questionnaire{
+    align-items: flex-end;
+    margin-top: 10px;
+    .sigepec-module-add-questionnaire__textfield{
+        position: relative;
+        width: calc(100% - 60px);
+        &.type2{
+            width: calc(100% - 110px);
+        }
+    }
+    .sigepec-module-add-questionnaire__button{
+        position: relative;
+        width: 45px;
+        height: 45px;
+        @extend %flex-center;
+        background: $sigepec-color-background;
+        border: none;
+        transition: 0.25s ease;
+        border-radius: 5px;
+        cursor: pointer;
+        svg{
+            width: 30px;
+            height: 30px;
+        }
+        &:hover{
+            background: $sigepec-color-dangerAccent;
+        }
+        &.is--correct:hover{
+            background: $sigepec-color-primaryAccent;    
+        }
+    }
+}
+
+.sigepec-module-show-questionnaire{
+    margin-top: 20px;
+    h1{
+        font-size: 20pt;
+        margin-bottom: 10px;
+    }
+    .sigepec-module-show-questionnaire__question{
+        margin-top: 15px;
+        margin-left: 15px;
+        .sigepec-module-show-questionnaire-question{
+            margin-left: 15px;
+            margin-top: 10px;
+            .sigepec-module-show-questionnaire-propals{
+                column-gap: 30px;
+                margin-top: 5px;
+                margin-left: 15px;
+                .sigepec-module-show-questionnaire-propal{
+                    column-gap: 10px;
+                }
+            }
+        }
+    }
+}
+.sigepec-module-add-head__action{
+    column-gap: 5px;
+}

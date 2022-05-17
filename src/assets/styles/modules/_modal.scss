@@ -1,0 +1,59 @@
+.sigepec-modal{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgba($color: #000000, $alpha: .25);
+    z-index: 9999;
+    transition: 0.3s ease;
+    transform: translateY(-100%);
+    &.is--show{
+        transform: translateY(0);
+    }
+    .sigepec-modal__container{
+        position: relative;
+        max-width: 780px;
+        // min-height: 60vh;
+        max-height: 90vh;
+        background: $sigepec-color-white;
+        border-radius: 10px;
+        padding: 15px;
+        overflow-y: auto;
+        margin: auto;
+        margin-top: 20px;
+    }
+    h1{
+        font-size: 24pt;
+    }
+    .sigepec-modal__close{
+        background: $sigepec-color-white;
+        position: absolute;
+        z-index: 3;
+        top: 10px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        border: none;
+        cursor: pointer;
+        border-radius: 50%;
+        @extend %flex-center;
+        // text-align: center;
+        transition: 0.25s ease;
+        svg{
+            width: 30px;
+            height: 30px;
+        }
+        &:hover{
+            background: $sigepec-color-background;
+        }
+        
+    }
+    .sigepec-modal__body{
+        margin-top: 10px;
+    }
+    .sigepec-modal-flex{
+        column-gap: 10px;
+        row-gap: 10px;
+    }
+}

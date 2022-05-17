@@ -1,0 +1,312 @@
+.sigepec-layout__auth{
+    .sigepec-layout-auth__formContainer{
+        position: relative;
+        width: 55vw;
+        height: 100vh;
+        padding: 30px;
+        @extend %flex-vertical-center;
+    }
+    .sigepec-layout-auth__image{
+        position: relative;
+        width:  45vw;
+        height: 100vh;
+        background: $sigepec-color-white;
+        img{
+            @extend %image-center;
+            filter: grayscale(1);
+        }
+    }
+    .sigepec-layout-auth__header{
+        position: relative;
+        margin-bottom: 30px;
+        width: 100%;
+        .sigepec-layout-auth__logo{
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            margin-bottom: 30px;
+            row-gap: 5px;
+            a{
+                font-size: 22pt;
+                font-family: $sigepec-font-medium;
+                text-transform: uppercase;
+            }
+            span{
+                font-size: 14pt;
+            }
+        }
+        .sigepec-layout-auth__title{
+            h1{
+                font-size: 5vw;
+                text-transform: uppercase;
+            }
+            span{
+                font-size: 16pt;
+                margin-top: -5px;
+            }
+
+        }
+    }
+    .sigepec-layout-auth__main{
+        position: relative;
+        max-width: 420px;
+        margin-top: 30px;
+    }
+}
+
+.sigepec-layout-main__footer{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+.sigepec-help{
+    position: fixed;
+    z-index: 999;
+    width: 50px;
+    height: 50px;
+    bottom: 30px;
+    right: 30px;
+    a{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        @extend %flex-center;
+        text-align: center;
+        color: $sigepec-color-white;
+        background: $sigepec-color-text;
+        color: $sigepec-color-white;
+        border-radius: 50%;
+        span{
+            font-family: $sigepec-font-medium;
+            font-size: 18pt;
+            color: $sigepec-color-white;
+        }
+        &::after{
+            @include pseudo-el($content: "Aidez-moi!");
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(-110%);
+            width: 100px;
+            background: $sigepec-color-text;
+            color: $sigepec-color-white;
+            padding: 3px;
+            border-radius: 3px;
+            display: none;
+        }
+        &:hover{
+            &::after{
+                display: block;
+            }
+        }
+    }
+
+}
+.sigepec-layout-main__header{
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    top: 0;
+    left: 0;
+    background: $sigepec-color-white;
+    padding: 5px 30px;
+    z-index: 999;
+    .sigepec-layout-main-header__container{
+        height: 100%;
+    }
+    .sigepec-layout-main-header__logo{
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        @extend %flex-vertical-center;
+        column-gap: 10px;
+        a{
+            font-size: 18pt;
+            font-family: $sigepec-font-medium;
+        }
+    }
+    .sigepec-layout-main-header__search{
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 35vw;
+        background: $sigepec-color-background;
+        height: 100%;
+        border-radius: 25px;
+    }
+    .sigepec-layout-main-header__profile{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 150px;
+        height: 100%;
+        align-items: flex-end;
+        .sigepec-layout-main-header__avatar{
+            position: relative;
+            width: 40px;
+            background: $sigepec-color-background;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 25px;
+            border: 2px solid $sigepec-color-primary;
+            // @extend %flex-center;
+
+            img{
+                @extend %image-center;
+            }
+            
+        }
+
+        .sigepec-layout-main-header__icon{
+            &::after{
+                padding: 5px;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%) translateY(110%);
+                background: $sigepec-color-text;
+                color: $sigepec-color-white;
+                font-size: 12pt;
+                width: auto;
+                min-width: 120px;
+                border-radius: 5px;
+                text-align: center;
+            }
+           
+            &:nth-child(1){
+                &::after{
+                    @include pseudo-el($content: 'Paramètre du compte');
+                    display: none;
+                }
+                &:hover{
+                    &::after{
+                        display: block;
+                    }
+                }
+            }
+            &:nth-child(2){
+                background: rgb(255, 172, 172);
+                &::after{
+                    @include pseudo-el($content: 'Deconnexion');
+                    display: none;
+                }
+                &:hover{
+                    &::after{
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}
+.sigepec-layout-main-header__icon{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background: $sigepec-color-background;
+    border-radius: 50%;
+    @extend %flex-center;
+    border: none;
+    cursor: pointer;
+}
+.sigepec-layout-main__navigation{
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 300px;
+    height: calc(100vh - 50px);
+    background: $sigepec-color-white;
+    padding: 20px 10px;
+    padding-top: 40px;
+    z-index: 99;
+    transition: all 0.5s ease;
+    .sigepec-layout-main-navigation{
+        position: relative;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        // row-gap: 10px;
+        @extend %list-style-none;
+        .sigepec-layout-main-navigation__item{
+            height: calc(100% / 12 - 10px);
+            a{
+                position: relative;
+                width: 100%;
+                height: 100%;
+                background: $sigepec-color-background;
+                border-radius: 5px;
+                padding: 5px 10px;
+                @extend %flex-vertical-center;
+                &:hover, &.active{
+                    background: $sigepec-color-primary;
+                }
+            }
+        }
+    }
+    &.is--inactive{
+        transform: translateX(calc(-100% + 5px));
+        padding: 20px 0px;
+        padding-top: 40px;
+        .sigepec-layout-main-navigation__item{
+            a{
+                padding: 0;
+                background: none;
+            }
+        }
+    }
+}
+.sigepec-layout-main__main{
+    position: relative;
+    width: calc(100% - 300px);
+    margin-top: 50px;
+    margin-left: 300px;
+    min-height: calc(100vh - 90px);
+    // background: rebeccapurple;
+    transition: all 0.5s ease;
+    padding: 30px;
+    &.is--inactive{
+        width: calc(100% - 5px);
+        margin-left: 5px;
+    }
+}
+
+.sigepec-module__layout{
+    position: relative;
+    .sigepec-module__head{
+        h1{
+            font-size: 18pt;
+            font-family: $sigepec-font-medium;
+        }
+        .sigepec-module__nav{
+            @extend %list-style-none;
+            column-gap: 10px;
+            align-items: center;
+            .sigepec-module-nav__item{
+                padding: 5px 15px;
+                border-radius: 20px;
+                background: $sigepec-color-white;
+                border: 0.25px solid rgba($color: #000000, $alpha: .4);
+                a, button{
+                    position: relative;
+                    width: 100%;
+                    border: none;
+                    background: none;
+                    cursor: pointer;
+                    text-align: left;
+                }
+                &:hover, &.is--active{
+                    background: $sigepec-color-primaryAccent;
+                    border: 0.25px solid rgba($color: $sigepec-color-primaryHover, $alpha: .6);
+                    a{
+                        color: $sigepec-color-text;
+                        &:hover{
+                            color: $sigepec-color-text;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

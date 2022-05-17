@@ -1,0 +1,134 @@
+.sigepec-user__autoBox{
+    position: relative;
+    width: calc(100% - 490px);
+    min-height: 65vh;
+    h2{
+        font-size: 20pt;
+    }
+}
+.sigepec-user__infoBox{
+    position: relative;
+    width: 480px;
+    min-height: 65vh;
+    h2{
+        font-size: 20pt;
+    }
+    .sigepec-user-user__container{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        column-gap: 10px;
+        .sigepec-user__avatar{
+            position: relative;
+            width: 120px;
+            height: 120px;
+            overflow: hidden;
+            border-radius: 50%;
+            background-color: rgb(155, 155, 155);
+            img{
+                position: relative;
+                width: 100%;
+                height: 100% !important;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+        strong{
+            font-size: 24pt;
+            margin-bottom: 10px;
+        }
+    }
+}
+.sigepec-user__notif{
+    position: relative;
+    width: 100%;
+    height: 65vh;
+    padding: 10px;
+    background: $sigepec-color-white;
+    border-radius: 10px;
+}
+.sigepec-user__user{
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: $sigepec-color-white;
+    border-radius: 10px;
+    height: 200px;
+}
+.sigepec-user__activities{
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: $sigepec-color-white;
+    border-radius: 10px;
+}
+.sigepec-user-navigation{
+    position: fixed;
+    // top: 0;
+    // left: 0;
+    width: 320px;
+    // margin-bottom: 10px;
+    padding: 10px;
+    background: $sigepec-color-white;
+    border-radius: 10px;
+    // background-color: red;
+    .sigepec-user-navigation__item{
+        list-style: none;
+        width: 100%;
+        margin: 5px 0;
+        a{
+            display: block;
+            position: relative;
+            width: 100%;
+            padding: 15px 10px;
+            background: $sigepec-color-background;
+            border-radius: 5px;
+            transition: 0.25s ease;
+            &:hover , &.active{
+                background: $sigepec-color-primaryAccent;
+                color: $sigepec-color-black;
+            }
+        }
+    }
+}
+.sigepec-user-formContainer{
+    position: relative;
+    margin-left: 330px;
+    width: calc(100% - 330px);
+    padding: 10px;
+    background: $sigepec-color-white;
+    border-radius: 10px;
+    h2{
+        font-size: 20pt;
+    }
+    form{
+        margin-top: 20px;
+    }
+    .sigepec-user-form__avatar{
+        position: relative;
+        width: 200px;
+        margin: 10px auto;
+        input{
+            display: none;
+        }
+        .sigepec-user-form-avatar{
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 5px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            img{
+                position: relative;
+                width: 100%;
+                height: 100% !important;
+                object-fit: cover;
+                object-position: center;
+                background-color: rgb(155, 155, 155);
+            }
+        }
+    }
+}
