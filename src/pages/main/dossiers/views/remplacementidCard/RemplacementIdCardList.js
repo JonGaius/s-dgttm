@@ -8,7 +8,6 @@ import PrintIcon from '../../../../../assets/icons/PrintIcon';
 import SearcIcon from '../../../../../assets/icons/SearcIcon';
 import SortIcon from '../../../../../assets/icons/SortIcon';
 import TrashIcon from '../../../../../assets/icons/TrashIcon';
-import BtnLink from '../../../../../components/button/BtnLink';
 import FileDarianne from '../../../../../components/card/FileDarianne';
 import OldFileDariane from '../../../../../components/card/OldFileDariane';
 import DossierLayout from '../../DossierLayout';
@@ -148,7 +147,7 @@ const RemplacementIdCardList = ({title}) => {
                     Accueil
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers'}>
-                    Gestion des Dossiers
+                    Gestion des dossiers
                 </OldFileDariane>
             </FileDarianne>
             <div className='sigepec-module-dossier-list'>

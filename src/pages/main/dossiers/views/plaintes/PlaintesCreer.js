@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import ListIcon from '../../../../../assets/icons/ListIcon';
 import TimerIcon from '../../../../../assets/icons/TimerIcon';
 import FormBtn from '../../../../../components/button/FormBtn';
 import FileDarianne from '../../../../../components/card/FileDarianne';
@@ -27,19 +29,26 @@ const PlaintesCreer = ({title}) => {
         setExamen(val)
     } 
     const handleSubmit = (e) => {
-
+        e.preventDefault();
     }
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={"/gestion-des-dossiers/plaintes"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                    </ul>);
     return (
-        <DossierLayout here={'add'}>
+        <DossierLayout actions={actions}>
         <FileDarianne actuel={'Ajout d\' un dossier Plainte'}>
             <OldFileDariane link={'/'}>
                 Accueil
             </OldFileDariane>
             <OldFileDariane link={'/gestion-des-dossiers'}>
-                Gestion des Dossiers
+                Gestion des dossiers
             </OldFileDariane>
             <OldFileDariane link={'/gestion-des-dossiers/plaintes'}>
-                Gestion des Dossiers Plaintes
+                Plaintes
             </OldFileDariane>
         </FileDarianne>
             <div className='sigepec-module-add is--large has--flex_between'>

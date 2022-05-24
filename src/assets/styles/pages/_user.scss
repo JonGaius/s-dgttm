@@ -19,6 +19,15 @@
         height: 100%;
         align-items: center;
         column-gap: 10px;
+        .sigepec-user_info{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            row-gap: 5px;
+            a{
+                margin-top: 20px;
+            }
+        }
         .sigepec-user__avatar{
             position: relative;
             width: 120px;
@@ -36,7 +45,6 @@
         }
         strong{
             font-size: 24pt;
-            margin-bottom: 10px;
         }
     }
 }

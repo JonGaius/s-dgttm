@@ -125,6 +125,7 @@ import Resultat from "./pages/main/examens/views/Resultat";
 import ResultatExam from "./pages/main/examens/views/ResultatExam";
 import Sujet from "./pages/main/examens/views/Sujet";
 import EtatPreview from "./pages/main/examinateurs/views/EtatPreview";
+import Examinateur from "./pages/main/examinateurs/views/Examinateur";
 import ExaminateurEtats from "./pages/main/examinateurs/views/ExaminateurEtats";
 import ExaminateurHome from "./pages/main/examinateurs/views/ExaminateurHome";
 import HelpPage from "./pages/main/help/HelpPage";
@@ -168,7 +169,10 @@ function App() {
         }/>
         {/* Examinateurs */}
         <Route exact path="/gestion-des-examinateurs" element={
-          <ExaminateurHome title={'Gestion des examinateurs'}/>
+          <Examinateur title={'Gestion des examinateurs'}/>
+        }/>
+        <Route exact path="/gestion-des-examinateurs/liste" element={
+          <ExaminateurHome title={'Liste des examinateurs'}/>
         }/>
         <Route exact path="/gestion-des-examinateurs/etats/:slug" element={
           <ExaminateurEtats title={'Les Etats d\'un examinateur'}/>

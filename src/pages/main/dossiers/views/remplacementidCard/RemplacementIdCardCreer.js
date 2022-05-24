@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import ListIcon from '../../../../../assets/icons/ListIcon';
 import TimerIcon from '../../../../../assets/icons/TimerIcon';
 import FormBtn from '../../../../../components/button/FormBtn';
 import FileDarianne from '../../../../../components/card/FileDarianne';
@@ -69,19 +71,27 @@ const RemplacementIdCardCreer = ({title}) => {
         setScanBirth(value)
     }
     const handleSubmit = (e) => {
-
+        e.preventDefault();
     }
+
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={"/gestion-des-dossiers/remplacement-idcard"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                    </ul>);
     return (
-        <DossierLayout here={'add'}>
-            <FileDarianne actuel={'Ajout d\'un dossier Remplacement Idcard'}>
+        <DossierLayout actions={actions}>
+            <FileDarianne actuel={'Ajout d\'un remplacement Idcard'}>
                 <OldFileDariane link={'/'}>
                     Accueil
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers'}>
-                    Gestion des Dossiers
+                    Gestion des dossiers
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers/remplacement-idcard'}>
-                    Gestion des Dossiers Remplacement idCard
+                    Remplacement idCard
                 </OldFileDariane>
             </FileDarianne>
             <div className='sigepec-module-add is--large has--flex_between'>

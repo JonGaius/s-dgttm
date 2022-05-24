@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import BellIcon from '../../../assets/icons/BellIcon';
 import LogoutIcon from '../../../assets/icons/LogoutIcon';
 import MenuIcon from '../../../assets/icons/MenuIcon';
-import SettingIcon from '../../../assets/icons/SettingIcon';
 import image from '../../../assets/images/pexels-ron-lach-9518019.jpg';
 
 const Header = () => {
@@ -14,6 +14,9 @@ const Header = () => {
             document.querySelector('.sigepec-layout-main__navigation').classList.add('is--inactive');
             document.querySelector('.sigepec-layout-main__main').classList.add('is--inactive');
         }
+    }
+    const activeNotif = () => {
+        document.querySelector(".sigepec-layout-main-header-notif__container").classList.toggle("is--active")
     }
     return (
         <>
@@ -28,15 +31,23 @@ const Header = () => {
                         </Link>
                     </div>
                     <div className='sigepec-layout-main-header__search'>
-
+                        <strong>Information: </strong> <span>Information de SIGEPeC intitule</span>
                     </div>
                     <div className='sigepec-layout-main-header__profile has--flex_between'>
+                        <div className='sigepec-layout-main-header__notif'>
+                            <button className='sigepec-layout-main-header__icon' type='button' onClick={() => activeNotif()}>
+                                <BellIcon/>
+                            </button>
+                            <div className='sigepec-layout-main-header-notif__container'>
+                                <h2>Boite de reception</h2>
+                            </div>
+                        </div>
                         <div className='sigepec-layout-main-header__avatar'>
                             <Link to={'/mon-compte'}>
                                 <img src={image} alt="avatar" />
                             </Link>
                         </div>
-                        <button className='sigepec-layout-main-header__icon' type='button'>
+                        <button className='sigepec-layout-main-header__icon is--danger' type='button'>
                             <LogoutIcon/>
                         </button>
                     </div>

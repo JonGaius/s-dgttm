@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 import AddIcon from '../../../../assets/icons/AddIcon';
 import BanIcon from '../../../../assets/icons/BanIcon';
 import CancelIcon from '../../../../assets/icons/CancelIcon';
-import CheckIcon from '../../../../assets/icons/CheckIcon';
 import EditIcon from '../../../../assets/icons/EditIcon';
 import EventIcon from '../../../../assets/icons/EventIcon';
+import ExportIcon from '../../../../assets/icons/ExportIcon';
+import ListIcon from '../../../../assets/icons/ListIcon';
 import OptionIcon from '../../../../assets/icons/OptionIcon';
+import PrintIcon from '../../../../assets/icons/PrintIcon';
 import SearcIcon from '../../../../assets/icons/SearcIcon';
 import SortIcon from '../../../../assets/icons/SortIcon';
+import TrashIcon from '../../../../assets/icons/TrashIcon';
 import FormBtn from '../../../../components/button/FormBtn';
 import FileDarianne from '../../../../components/card/FileDarianne';
 import OldFileDariane from '../../../../components/card/OldFileDariane';
@@ -33,9 +36,6 @@ const ExaminateurHome = ({title}) => {
     }
     const changeEmail = (val) => {
         setEmail(val)
-    }
-    const changePhone = (val) => {
-        setTelephone(val)
     }
     const [tableElement, setTableElement] = useState([
         {
@@ -110,12 +110,42 @@ const ExaminateurHome = ({title}) => {
     const removeModal = (id) => {
         document.getElementById(id).classList.remove('is--show');
     }
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={"/gestion-des-examinateurs/liste"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button' onClick={() => {activeModal('create-modal')}}>
+                                <AddIcon/>  {"Ajouter"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <ExportIcon/> {"Exporter"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <PrintIcon/> {"Imprimer"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--danger`}>
+                            <button type='button'>
+                                <TrashIcon/> {"Supprimer"}
+                            </button>
+                        </li>
+                    </ul>);
 
     return (
-        <ExanimateurLayout>
-            <FileDarianne actuel={'Gestion des Examinateurs'}>
+        <ExanimateurLayout actions={actions}>
+            <FileDarianne actuel={'Liste des examinateurs'}>
                 <OldFileDariane link={'/'}>
                     Accueil
+                </OldFileDariane>
+                <OldFileDariane link={'/gestion-des-examinateurs'}>
+                    Gestion des examinateurs
                 </OldFileDariane>
             </FileDarianne>
             <div className='sigepec-module-dossier-list'>
@@ -131,9 +161,6 @@ const ExaminateurHome = ({title}) => {
                                 <SortIcon/>
                             </button>
                         </div>
-                        <button type='button' className='sigepec-btn is--primary' onClick={() => {activeModal('create-modal')}}>
-                            <AddIcon/>  <span>Ajouter un nouvel examinateur</span>
-                        </button>
                     </div>
                 </div>
                 <div className='sigepec-module-dossier-list__container is--large'>
@@ -181,8 +208,17 @@ const ExaminateurHome = ({title}) => {
                                             <OptionIcon/>
                                         </button>
                                         <div className='sigepec-table__option' id={element.slug}>
+                                            <button id={`modal-${element.slug}`} type={'button'} onClick={() => {showModal('show-modal', element.id)}}>
+                                                Editer
+                                            </button>
                                             <button id={`modal-${element.slug}`} type={'button'} onClick={() => {editModal('edit-modal', element.id)}}>
                                                 Modifier
+                                            </button>
+                                            <button type='button'>
+                                                Imprimer
+                                            </button>
+                                            <button type='button'>
+                                                Exporter
                                             </button>
                                             <button type='button'>
                                                 Supprimer

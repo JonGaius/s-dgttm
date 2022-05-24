@@ -15,7 +15,7 @@ const DashBoardPage = ({title}) => {
                 <section className='sigepec-user__container is--large has--flex_between'>
                     <div className='sigepec-user__autoBox'>
                         <div className='sigepec-user__notif'>
-                            <h2>Notifications</h2>
+                            <h2>Récentes activités</h2>
                             <div className='sigepec-h-bar'></div>
                         </div>
                     </div>
@@ -27,6 +27,9 @@ const DashBoardPage = ({title}) => {
                                 </div>
                                 <div className='sigepec-user_info'>
                                     <strong>Jannie Doe</strong>
+                                    <span>jannie_doe@email.com</span>
+                                    <span>+226 7X XX XX XX</span>
+                                   
                                     <BtnLink link={'/mon-compte/parametres'} style={'is--primary'}>
                                         Modifier mes informations
                                     </BtnLink>
@@ -34,7 +37,7 @@ const DashBoardPage = ({title}) => {
                             </div>
                         </div>
                         <div className='sigepec-user__activities'>
-                            <h2>Récentes activités</h2>
+                            <h2>Le saviez-vous</h2>
                             <div className='sigepec-h-bar'></div>
                         </div>
                     </div>

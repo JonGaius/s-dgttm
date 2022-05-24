@@ -135,12 +135,15 @@
         background: $sigepec-color-background;
         height: 100%;
         border-radius: 25px;
+        padding: 5px;
+        @extend %flex-center;
+        column-gap: 10px;
     }
     .sigepec-layout-main-header__profile{
         position: absolute;
         top: 0;
         right: 0;
-        width: 90px;
+        width: 150px;
         height: 100%;
         align-items: flex-end;
         .sigepec-layout-main-header__avatar{
@@ -152,11 +155,32 @@
             border-radius: 25px;
             border: 2px solid $sigepec-color-primary;
             // @extend %flex-center;
-
             img{
                 @extend %image-center;
             }
             
+        }
+        .sigepec-layout-main-header__notif{
+            position: relative;
+            .sigepec-layout-main-header-notif__container{
+                position: absolute;
+                width: 380px;
+                height: 300px;
+                display: none;
+                background-color: #ffffff;
+                border: 0.25px solid rgba($color: $sigepec-color-primaryHover, $alpha: .6);
+                top: 45px;
+                left: 40px;
+                transform: translateX(-100%);
+                border-radius: 10px;
+                padding: 20px;
+                h2{
+                    font-size: 18pt;
+                }
+                &.is--active{
+                    display: block;
+                }
+            }
         }
 
         .sigepec-layout-main-header__icon{
@@ -173,10 +197,10 @@
                 border-radius: 5px;
                 text-align: center;
             }
-           
-            &:nth-child(1){
+           &.is--danger{
+                background: rgb(255, 172, 172);
                 &::after{
-                    @include pseudo-el($content: 'Paramètre du compte');
+                    @include pseudo-el($content: 'Deconnexion');
                     display: none;
                 }
                 &:hover{
@@ -184,11 +208,10 @@
                         display: block;
                     }
                 }
-            }
-            &:nth-child(2){
-                background: rgb(255, 172, 172);
+           }
+            &:nth-child(1){
                 &::after{
-                    @include pseudo-el($content: 'Deconnexion');
+                    @include pseudo-el($content: 'Notification');
                     display: none;
                 }
                 &:hover{
