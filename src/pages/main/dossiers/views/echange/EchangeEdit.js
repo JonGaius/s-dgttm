@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
+import AddIcon from '../../../../../assets/icons/AddIcon';
 import CancelIcon from '../../../../../assets/icons/CancelIcon';
+import CheckIcon from '../../../../../assets/icons/CheckIcon';
+import ExportIcon from '../../../../../assets/icons/ExportIcon';
+import DossierIcon from '../../../../../assets/icons/ic/DossierIcon';
+import ListIcon from '../../../../../assets/icons/ListIcon';
+import PrintIcon from '../../../../../assets/icons/PrintIcon';
+import TrashIcon from '../../../../../assets/icons/TrashIcon';
 import FileDarianne from '../../../../../components/card/FileDarianne';
 import FilePreview from '../../../../../components/card/FilePreview';
 import OldFileDariane from '../../../../../components/card/OldFileDariane';
@@ -12,7 +19,7 @@ import DossierLayout from '../../DossierLayout';
 
 const EchangeEdit = ({title}) => {
     document.querySelector('title').innerHTML = title + ' | SIGEPEC';
-    let params = useParams();
+    let slug = useParams();
     let navigate = useLocation();
 
     const activeModal = (id) => {
@@ -264,9 +271,46 @@ const EchangeEdit = ({title}) => {
         navigate('/gestion-des-dossiers/echange');
     }
 
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/echange"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/creer/echange"}>
+                                <AddIcon/>  {"Ajouter"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={`/gestion-des-dossiers/voir/echange/${slug.slug}`}>
+                                <DossierIcon/>  {"Editer"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={`/gestion-des-dossiers/valider/echange/${slug.slug}`}>
+                                <CheckIcon/>  {"Valider"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <ExportIcon/> {"Exporter"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <PrintIcon/> {"Imprimer"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--danger`}>
+                            <button type='button'>
+                                <TrashIcon/> {"Supprimer"}
+                            </button>
+                        </li>
+                    </ul>);
     return (
-        <DossierLayout here={'list'}> 
-            <FileDarianne actuel={'Modification d\'un dossier Echange'}>
+        <DossierLayout actions={actions}> 
+            <FileDarianne actuel={'Modification d\'un echange'}>
                 <OldFileDariane link={'/'}>
                     Accueil
                 </OldFileDariane>
@@ -274,7 +318,7 @@ const EchangeEdit = ({title}) => {
                     Gestion des Dossiers
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers/echange'}>
-                    Gestion des Dossiers Echange
+                    Echange
                 </OldFileDariane>
             </FileDarianne>
             <div className='sigepec-module-add__head is--large has--flex_between'>
@@ -459,6 +503,11 @@ const EchangeEdit = ({title}) => {
                                 Modifier les informations
                             </button>
                         </div>
+                    </div>
+                    <div className="sigepec-module-add-section__container">
+                        <h2>Le saviez-vous</h2>
+                        <div className='sigepec-h-bar'></div>
+                        
                     </div>
                 </div>
             </div>

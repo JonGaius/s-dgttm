@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import CancelIcon from '../../../../../../assets/icons/CancelIcon';
+import ListIcon from '../../../../../../assets/icons/ListIcon';
 import FileDarianne from '../../../../../../components/card/FileDarianne';
 import FilePreview from '../../../../../../components/card/FilePreview';
 import OldFileDariane from '../../../../../../components/card/OldFileDariane';
@@ -131,18 +132,25 @@ const RemplacementApercu = ({title}) => {
         navigate('/gestion-des-dossiers/remplacement');
     }
 
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={"/gestion-des-dossiers/remplacement"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                    </ul>);
     return (
        
-        <DossierLayout here={'add'}>
-            <FileDarianne actuel={'Ajout d\'un dossier Remplacement'}>
+        <DossierLayout actions={actions}>
+            <FileDarianne actuel={'Ajout d\'un remplacement'}>
                 <OldFileDariane link={'/'}>
                     Accueil
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers'}>
-                    Gestion des Dossiers
+                    Gestion des dossiers
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers/remplacement'}>
-                    Gestion des Dossiers Remplacement
+                    Remplacement
                 </OldFileDariane>
             </FileDarianne>
             <div className='sigepec-module-add__head is--large has--flex_between'>

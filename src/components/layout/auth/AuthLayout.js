@@ -10,7 +10,7 @@ const AuthLayout = ({image,title, subtitle, children}) => {
                         <header className='sigepec-layout-auth__header'>
                             <div className="sigepec-layout-auth__logo">
                                 <Link to={'/'}>
-                                    Sigepec - DGTTM
+                                    SIGEPeC - DGTTM
                                 </Link>
                                 <span>
                                     Système Intégré de Gestion des Permis de Conduire

@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import AddIcon from '../../../../../assets/icons/AddIcon';
 import CheckIcon from '../../../../../assets/icons/CheckIcon';
+import ExportIcon from '../../../../../assets/icons/ExportIcon';
+import DossierIcon from '../../../../../assets/icons/ic/DossierIcon';
+import ListIcon from '../../../../../assets/icons/ListIcon';
+import PrintIcon from '../../../../../assets/icons/PrintIcon';
+import TrashIcon from '../../../../../assets/icons/TrashIcon';
 import FormBtn from '../../../../../components/button/FormBtn';
 import FileDarianne from '../../../../../components/card/FileDarianne';
 import OldFileDariane from '../../../../../components/card/OldFileDariane';
@@ -13,7 +20,7 @@ const PlaintesEdit = ({title}) => {
     const [objet, setObjet] = useState('');
     const [examen, setExamen] = useState('');
     const [reference, setReference] = useState('');
-
+    let slug = useParams();
     const changeNumIdCard = (val) => {
         setNumIdCard(val)
     } 
@@ -29,17 +36,54 @@ const PlaintesEdit = ({title}) => {
     const handleSubmit = (e) => {
 
     }
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/plaintes"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/creer/plaintes"}>
+                                <AddIcon/>  {"Ajouter"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={`/gestion-des-dossiers/voir/plaintes/${slug.slug}`}>
+                                <DossierIcon/>  {"Editer"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={`/gestion-des-dossiers/valider/plaintes/${slug.slug}`}>
+                                <CheckIcon/>  {"Valider"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <ExportIcon/> {"Exporter"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <PrintIcon/> {"Imprimer"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--danger`}>
+                            <button type='button'>
+                                <TrashIcon/> {"Supprimer"}
+                            </button>
+                        </li>
+                    </ul>);
     return (
         <DossierLayout here={'list'}>
-            <FileDarianne actuel={'Modification d\' un dossier Plainte'}>
+            <FileDarianne actuel={'Modification d\'une plainte'}>
                 <OldFileDariane link={'/'}>
                     Accueil
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers'}>
-                    Gestion des Dossiers
+                    Gestion des dossiers
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers/plaintes'}>
-                    Gestion des Dossiers Plaintes
+                    Plaintes
                 </OldFileDariane>
             </FileDarianne>
             <div className='sigepec-module-add is--large has--flex_between'>
@@ -51,6 +95,11 @@ const PlaintesEdit = ({title}) => {
                                 <CheckIcon/> <span>Informations Dossier</span>
                             </StepCard>
                         </div>
+                    </div>
+                    <div className="sigepec-module-add-section__container">
+                        <h2>Le saviez-vous</h2>
+                        <div className='sigepec-h-bar'></div>
+                        
                     </div>
                 </div>
                 <div className='sigepec-module-add__form'>

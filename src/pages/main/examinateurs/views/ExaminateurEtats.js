@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import CancelIcon from '../../../../assets/icons/CancelIcon';
 import CheckIcon from '../../../../assets/icons/CheckIcon';
+import PrintIcon from '../../../../assets/icons/PrintIcon';
 import FormBtn from '../../../../components/button/FormBtn';
 import FileDarianne from '../../../../components/card/FileDarianne';
 import OldFileDariane from '../../../../components/card/OldFileDariane';
@@ -133,7 +134,7 @@ const ExaminateurEtats = ({title}) => {
                                         </div>
                                         <div className='sigepec-table__column is--auto2'>
                                             <Link to={`/gestion-des-examinateurs/etats/preview/${etat.slug}`} className='sigepec-tab-btn'>
-                                                <CheckIcon/> Imprimer
+                                                <PrintIcon/> Imprimer
                                             </Link>
                                         </div>
                                     </div>

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import BackIcon from '../../../../../../assets/icons/BackIcon';
 import CancelIcon from '../../../../../../assets/icons/CancelIcon';
 import CheckIcon from '../../../../../../assets/icons/CheckIcon';
+import ListIcon from '../../../../../../assets/icons/ListIcon';
 import FileDarianne from '../../../../../../components/card/FileDarianne';
 import FilePreview from '../../../../../../components/card/FilePreview';
 import OldFileDariane from '../../../../../../components/card/OldFileDariane';
@@ -225,9 +226,7 @@ const NPApercu = ({title}) => {
     const changePostale = (value) => {
         setPostale(value)
     }
-    const changePhone = (value) => {
-        setPhone(value)
-    }
+    
     const changeProvince = (value) => {
         setProvince(value)
     }
@@ -253,6 +252,13 @@ const NPApercu = ({title}) => {
         navigate('/gestion-des-dossiers/nouveaux-permis');
     }
 
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={"/gestion-des-dossiers/nouveaux-permis"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                    </ul>);
     useEffect(() => {
         if(passport){
             setHide(2)
@@ -262,16 +268,16 @@ const NPApercu = ({title}) => {
     }, [])
 
     return (
-        <DossierLayout here={'add'}> 
+        <DossierLayout actions={actions}> 
             <FileDarianne actuel={'Ajout d\'un Nouveau Permis'}>
                 <OldFileDariane link={'/'}>
                     Accueil
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers'}>
-                    Gestion des Dossiers
+                    Gestion des dossiers
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers/nouveaux-permis'}>
-                    Gestion des Nouveaux permis
+                    Nouveaux permis
                 </OldFileDariane>
             </FileDarianne>
             <div className='sigepec-module-add__head is--large has--flex_between'>

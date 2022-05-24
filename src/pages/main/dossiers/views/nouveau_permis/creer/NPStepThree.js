@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import CheckIcon from '../../../../../../assets/icons/CheckIcon';
+import ListIcon from '../../../../../../assets/icons/ListIcon';
 import TimerIcon from '../../../../../../assets/icons/TimerIcon';
 import FormBtn from '../../../../../../components/button/FormBtn';
 import FileDarianne from '../../../../../../components/card/FileDarianne';
@@ -68,9 +69,16 @@ const NPStepThree = ({title}) => {
         }
         
     }
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={"/gestion-des-dossiers/nouveaux-permis"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                    </ul>);
     return (
-        <DossierLayout here={'add'}> 
-        <FileDarianne actuel={'Ajout d\'un Nouveau Permis'}>
+        <DossierLayout actions={actions}> 
+        <FileDarianne actuel={'Ajout d\'un nouveau permis'}>
             <OldFileDariane link={'/'}>
                 Accueil
             </OldFileDariane>
@@ -78,7 +86,7 @@ const NPStepThree = ({title}) => {
                 Gestion des Dossiers
             </OldFileDariane>
             <OldFileDariane link={'/gestion-des-dossiers/nouveaux-permis'}>
-                Gestion des Nouveaux permis
+                Nouveaux permis
             </OldFileDariane>
         </FileDarianne>
             <div className='sigepec-module-add is--large has--flex_between'>

@@ -60,6 +60,10 @@
         position: relative;
         width: calc(100% - (80px + 200px * 2));
     }
+    .is--auto10{
+        position: relative;
+        width: calc((100% - 800px - 80px) / 2);
+    }
     .is--auto1{
         position: relative;
         width: calc(100% - (160px + 200px * 3));

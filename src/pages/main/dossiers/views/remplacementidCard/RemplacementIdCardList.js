@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AddIcon from '../../../../../assets/icons/AddIcon';
+import ExportIcon from '../../../../../assets/icons/ExportIcon';
+import ListIcon from '../../../../../assets/icons/ListIcon';
 import OptionIcon from '../../../../../assets/icons/OptionIcon';
+import PrintIcon from '../../../../../assets/icons/PrintIcon';
 import SearcIcon from '../../../../../assets/icons/SearcIcon';
 import SortIcon from '../../../../../assets/icons/SortIcon';
+import TrashIcon from '../../../../../assets/icons/TrashIcon';
 import BtnLink from '../../../../../components/button/BtnLink';
 import FileDarianne from '../../../../../components/card/FileDarianne';
 import OldFileDariane from '../../../../../components/card/OldFileDariane';
@@ -110,9 +114,36 @@ const RemplacementIdCardList = ({title}) => {
        })
        setTableElement(element);
     }
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={"/gestion-des-dossiers/remplacement-idcard"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/creer/remplacement-idcard"}>
+                                <AddIcon/>  {"Ajouter"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <ExportIcon/> {"Exporter"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <PrintIcon/> {"Imprimer"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--danger`}>
+                            <button type='button'>
+                                <TrashIcon/> {"Supprimer"}
+                            </button>
+                        </li>
+                    </ul>);
     return (
-        <DossierLayout here={'list'}>
-            <FileDarianne actuel={'Gestion des dossiers Remplacement Idcard'}>
+        <DossierLayout actions={actions}>
+            <FileDarianne actuel={'Remplacement Idcard'}>
                 <OldFileDariane link={'/'}>
                     Accueil
                 </OldFileDariane>
@@ -133,9 +164,6 @@ const RemplacementIdCardList = ({title}) => {
                                 <SortIcon/>
                             </button>
                         </div>
-                        <BtnLink link={'/gestion-des-dossiers/creer/remplacement-idcard'} style={'is--primary'}>
-                            <AddIcon/>  <span>Ajouter un nouveau dossier</span>
-                        </BtnLink>
                     </div>
                 </div>
                 <div className='sigepec-module-dossier-list__container is--large'>
@@ -167,7 +195,7 @@ const RemplacementIdCardList = ({title}) => {
                             tableElement.map((element) => (
                                 <div className='sigepec-table__body' key={element.id}>
                                     <div className='sigepec-table__column is--little'>
-                                        {element.id}
+                                        <input type="checkbox" />
                                     </div>
                                     <div className='sigepec-table__column is--lilmed'>
                                         <span>{element.dossier}</span>
@@ -205,9 +233,21 @@ const RemplacementIdCardList = ({title}) => {
                                             <OptionIcon/>
                                         </button>
                                         <div className='sigepec-table__option' id={element.slug}>
+                                            <Link to={`/gestion-des-dossiers/voir/remplacement-idcard/${element.slug}`}>
+                                                Editer
+                                            </Link>
                                             <Link to={`/gestion-des-dossiers/modifier/remplacement-idcard/${element.slug}`}>
                                                 Modifier
                                             </Link>
+                                            <Link to={`/gestion-des-dossiers/valider/remplacement-idcard/${element.slug}`}>
+                                                Valider
+                                            </Link>
+                                            <button type='button'>
+                                                Imprimer
+                                            </button>
+                                            <button type='button'>
+                                                Exporter
+                                            </button>
                                             <button type='button'>
                                                 Supprimer
                                             </button>

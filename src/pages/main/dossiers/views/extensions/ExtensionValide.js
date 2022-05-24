@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import AddIcon from '../../../../../assets/icons/AddIcon';
 import CancelIcon from '../../../../../assets/icons/CancelIcon';
+import EditIcon from '../../../../../assets/icons/EditIcon';
+import ExportIcon from '../../../../../assets/icons/ExportIcon';
+import DossierIcon from '../../../../../assets/icons/ic/DossierIcon';
+import ListIcon from '../../../../../assets/icons/ListIcon';
+import PrintIcon from '../../../../../assets/icons/PrintIcon';
+import TrashIcon from '../../../../../assets/icons/TrashIcon';
 import FileDarianne from '../../../../../components/card/FileDarianne';
 import FilePreview from '../../../../../components/card/FilePreview';
 import OldFileDariane from '../../../../../components/card/OldFileDariane';
@@ -12,7 +19,7 @@ import DossierLayout from '../../DossierLayout';
 
 const ExtensionValide = ({title}) => {
     document.querySelector('title').innerHTML = title + ' | SIGEPEC';
-    let params = useParams();
+    let slug = useParams();
     const activeModal = (id) => {
         document.getElementById(id).classList.add('is--show');
     }
@@ -125,9 +132,46 @@ const ExtensionValide = ({title}) => {
         setScanCertificat(value)
     }
 
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/extensions"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/creer/extensions"}>
+                                <AddIcon/>  {"Ajouter"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={`/gestion-des-dossiers/voir/extensions/${slug.slug}`}>
+                                <DossierIcon/>  {"Editer"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={`/gestion-des-dossiers/voir/extensions/${slug.slug}`}>
+                                <EditIcon/>  {"Modifier"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <ExportIcon/> {"Exporter"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <PrintIcon/> {"Imprimer"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--danger`}>
+                            <button type='button'>
+                                <TrashIcon/> {"Supprimer"}
+                            </button>
+                        </li>
+                    </ul>);
     return (
-        <DossierLayout here={'validation'}>
-            <FileDarianne actuel={'Validation d\'un dossier Extension'}>
+        <DossierLayout actions={actions}>
+            <FileDarianne actuel={'Validation d\'une extension'}>
                 <OldFileDariane link={'/'}>
                     Accueil
                 </OldFileDariane>
@@ -135,10 +179,7 @@ const ExtensionValide = ({title}) => {
                     Gestion des Dossiers
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers/extensions'}>
-                    Gestion des Dossiers Extension
-                </OldFileDariane>
-                <OldFileDariane link={'/gestion-des-dossiers/validation-de-dossier/extensions'}>
-                    Gestion des Dossier extension en attente de validation
+                    Extension
                 </OldFileDariane>
             </FileDarianne>
             <div className='sigepec-module-add__head is--large has--flex_between'>

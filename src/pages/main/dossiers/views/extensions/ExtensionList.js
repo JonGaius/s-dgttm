@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AddIcon from '../../../../../assets/icons/AddIcon';
+import ExportIcon from '../../../../../assets/icons/ExportIcon';
+import ListIcon from '../../../../../assets/icons/ListIcon';
 import OptionIcon from '../../../../../assets/icons/OptionIcon';
+import PrintIcon from '../../../../../assets/icons/PrintIcon';
 import SearcIcon from '../../../../../assets/icons/SearcIcon';
 import SortIcon from '../../../../../assets/icons/SortIcon';
-import BtnLink from '../../../../../components/button/BtnLink';
+import TrashIcon from '../../../../../assets/icons/TrashIcon';
 import FileDarianne from '../../../../../components/card/FileDarianne';
 import OldFileDariane from '../../../../../components/card/OldFileDariane';
 import DossierLayout from '../../DossierLayout';
@@ -54,9 +57,36 @@ const ExtensionList = ({title}) => {
             }
         })
     }
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={"/gestion-des-dossiers/extensions"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/creer/extensions"}>
+                                <AddIcon/>  {"Ajouter"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <ExportIcon/> {"Exporter"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <PrintIcon/> {"Imprimer"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--danger`}>
+                            <button type='button'>
+                                <TrashIcon/> {"Supprimer"}
+                            </button>
+                        </li>
+                    </ul>);
     return (
-        <DossierLayout here={'list'}>
-            <FileDarianne actuel={'Gestion des dossiers Extension'}>
+        <DossierLayout actions={actions}>
+            <FileDarianne actuel={'Extension'}>
                 <OldFileDariane link={'/'}>
                     Accueil
                 </OldFileDariane>
@@ -77,9 +107,6 @@ const ExtensionList = ({title}) => {
                                 <SortIcon/>
                             </button>
                         </div>
-                        <BtnLink link={'/gestion-des-dossiers/creer/extensions'} style={'is--primary'}>
-                            <AddIcon/>  <span>Ajouter un nouveau dossier</span>
-                        </BtnLink>
                     </div>
                 </div>
                 <div className='sigepec-module-dossier-list__container is--large'>
@@ -91,10 +118,10 @@ const ExtensionList = ({title}) => {
                             <div className='sigepec-table__column is--lilmed'>
                                 <strong>Numéro de permis</strong>
                             </div>
-                            <div className='sigepec-table__column is--lilmed2'>
+                            <div className='sigepec-table__column is--auto10'>
                                 <strong>Lieu de délivrance</strong>
                             </div>
-                            <div className='sigepec-table__column is--lilmed2'>
+                            <div className='sigepec-table__column is--auto10'>
                                 <strong>Date dernière extension</strong>
                             </div>
                             <div className='sigepec-table__column is--lilmed'>
@@ -114,15 +141,15 @@ const ExtensionList = ({title}) => {
                             tableElement.map((element) => (
                                 <div className='sigepec-table__body' key={element.id}>
                                     <div className='sigepec-table__column is--little'>
-                                        -
+                                        <input type="checkbox" />
                                     </div>
                                     <div className='sigepec-table__column is--lilmed'>
                                         <Link to={`/gestion-des-dossiers/voir/extensions/${element.slug}`}>{element.dossier}</Link>
                                     </div>
-                                    <div className='sigepec-table__column is--lilmed2'>
+                                    <div className='sigepec-table__column is--auto10'>
                                         <span>{element.lieu}</span>
                                     </div>
-                                    <div className='sigepec-table__column is--lilmed2'>
+                                    <div className='sigepec-table__column is--auto10'>
                                         <span>{element.datextension}</span>
                                     </div>
                                     <div className='sigepec-table__column is--lilmed'>
@@ -139,9 +166,21 @@ const ExtensionList = ({title}) => {
                                             <OptionIcon/>
                                         </button>
                                         <div className='sigepec-table__option' id={element.slug}>
+                                            <Link to={`/gestion-des-dossiers/voir/extensions/${element.slug}`}>
+                                                Editer
+                                            </Link>
                                             <Link to={`/gestion-des-dossiers/modifier/extensions/${element.slug}`}>
                                                 Modifier
                                             </Link>
+                                            <Link to={`/gestion-des-dossiers/valider/extensions/${element.slug}`}>
+                                                Valider
+                                            </Link>
+                                            <button type='button'>
+                                                Imprimer
+                                            </button>
+                                            <button type='button'>
+                                                Exporter
+                                            </button>
                                             <button type='button'>
                                                 Supprimer
                                             </button>

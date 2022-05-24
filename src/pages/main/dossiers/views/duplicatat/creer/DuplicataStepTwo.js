@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import CheckIcon from '../../../../../../assets/icons/CheckIcon';
+import ListIcon from '../../../../../../assets/icons/ListIcon';
 import TimerIcon from '../../../../../../assets/icons/TimerIcon';
 import FormBtn from '../../../../../../components/button/FormBtn';
 import FileDarianne from '../../../../../../components/card/FileDarianne';
@@ -61,17 +62,26 @@ const DuplicataStepTwo = ({title}) => {
             console.log("error");
         }
     }
+
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={"/gestion-des-dossiers/duplicata"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                        
+                    </ul>);
     return (
-        <DossierLayout here={'add'}>
-            <FileDarianne actuel={'Gestion des dossiers duplicata'}>
-                <OldFileDariane link={'/'}>
+        <DossierLayout actions={actions}>
+            <FileDarianne actuel={"Ajout d'un duplicata"}>
+                <OldFileDariane link={'/'}> 
                     Accueil
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers'}>
-                    Gestion des Dossiers
+                    Gestion des dossiers
                 </OldFileDariane>
                     <OldFileDariane link={'/gestion-des-dossiers/duplicata'}>
-                        Gestion des Dossiers Duplicata
+                        Duplicata
                     </OldFileDariane>
             </FileDarianne>
             <div className='sigepec-module-add is--large has--flex_between'>

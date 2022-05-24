@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import AddIcon from '../../../../../assets/icons/AddIcon';
 import CheckIcon from '../../../../../assets/icons/CheckIcon';
+import ExportIcon from '../../../../../assets/icons/ExportIcon';
+import DossierIcon from '../../../../../assets/icons/ic/DossierIcon';
+import ListIcon from '../../../../../assets/icons/ListIcon';
+import PrintIcon from '../../../../../assets/icons/PrintIcon';
+import TrashIcon from '../../../../../assets/icons/TrashIcon';
 import FormBtn from '../../../../../components/button/FormBtn';
 import FileDarianne from '../../../../../components/card/FileDarianne';
 import OldFileDariane from '../../../../../components/card/OldFileDariane';
@@ -11,7 +17,7 @@ import DossierLayout from '../../DossierLayout';
 
 const PermisIntlEdit = ({title}) => {
     document.querySelector('title').innerHTML = title + ' | SIGEPEC';
-    let params = useParams(); 
+    let slug = useParams(); 
     let navigate = useNavigate();
     const [numPermis, setNumPermis] = useState('');
     const [reference, setReference] = useState('');
@@ -48,9 +54,46 @@ const PermisIntlEdit = ({title}) => {
     const handleSubmit = (e) => {
 
     }
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/permis-internationaux"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/creer/permis-internationaux"}>
+                                <AddIcon/>  {"Ajouter"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={`/gestion-des-dossiers/voir/permis-internationaux/${slug.slug}`}>
+                                <DossierIcon/>  {"Editer"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={`/gestion-des-dossiers/valider/permis-internationaux/${slug.slug}`}>
+                                <CheckIcon/>  {"Valider"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <ExportIcon/> {"Exporter"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <PrintIcon/> {"Imprimer"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--danger`}>
+                            <button type='button'>
+                                <TrashIcon/> {"Supprimer"}
+                            </button>
+                        </li>
+                    </ul>);
     return (
-        <DossierLayout here={'list'}>
-            <FileDarianne actuel={'Modification d\'un dossier Permis internationaux'}>
+        <DossierLayout actions={actions}>
+            <FileDarianne actuel={'Modification d\'un permis international'}>
                 <OldFileDariane link={'/'}>
                     Accueil
                 </OldFileDariane>
@@ -58,7 +101,7 @@ const PermisIntlEdit = ({title}) => {
                     Gestion des Dossiers
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers/permis-internationaux'}>
-                    Gestion des Dossiers Permis internationaux
+                    Permis internationaux
                 </OldFileDariane>
             </FileDarianne>
             <div className='sigepec-module-add is--large has--flex_between'>

@@ -24,24 +24,21 @@ const Header = () => {
                             <MenuIcon/>
                         </button>
                         <Link to={'/'}>
-                            SIGEPEC
+                            SIGEPeC
                         </Link>
                     </div>
-                    {/* <div className='sigepec-layout-main-header__search'>
+                    <div className='sigepec-layout-main-header__search'>
 
-                    </div> */}
+                    </div>
                     <div className='sigepec-layout-main-header__profile has--flex_between'>
-                        <Link to={'/mon-compte/parametres'} className='sigepec-layout-main-header__icon'>
-                            <SettingIcon/>
-                        </Link>
-                        <button className='sigepec-layout-main-header__icon' type='button'>
-                            <LogoutIcon/>
-                        </button>
                         <div className='sigepec-layout-main-header__avatar'>
                             <Link to={'/mon-compte'}>
                                 <img src={image} alt="avatar" />
                             </Link>
                         </div>
+                        <button className='sigepec-layout-main-header__icon' type='button'>
+                            <LogoutIcon/>
+                        </button>
                     </div>
                 </div>
             </header>

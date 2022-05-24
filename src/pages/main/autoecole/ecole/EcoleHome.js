@@ -13,6 +13,7 @@ import FileDarianne from '../../../../components/card/FileDarianne';
 import OldFileDariane from '../../../../components/card/OldFileDariane';
 import NormalTextField from '../../../../components/input/NormalTextField';
 import AutoEcoleLayout from '../AutoEcoleLayout';
+import BanIcon from '../../../../assets/icons/BanIcon';
 
 const EcoleHome = ({title}) => {
     const [tableElement, setTableElement] = useState([
@@ -297,7 +298,7 @@ const EcoleHome = ({title}) => {
                                 <EditIcon/> <span>Modifier les informations de l'auto-école</span>
                             </button>
                             <button type='button' className='sigepec-module-list__action is--large has--flex'>
-                                <CheckIcon/> <span>Suspendre l'auto-école</span>
+                                <BanIcon/> <span>Suspendre l'auto-école</span>
                             </button>
                             <button type='button' className='sigepec-module-list__action is--large has--flex'>
                                 <TrashIcon/> <span>Supprimer l'auto-école</span>

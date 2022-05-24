@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AddIcon from '../../../../../assets/icons/AddIcon';
+import ExportIcon from '../../../../../assets/icons/ExportIcon';
+import ListIcon from '../../../../../assets/icons/ListIcon';
 import OptionIcon from '../../../../../assets/icons/OptionIcon';
+import PrintIcon from '../../../../../assets/icons/PrintIcon';
 import SearcIcon from '../../../../../assets/icons/SearcIcon';
 import SortIcon from '../../../../../assets/icons/SortIcon';
-import BtnLink from '../../../../../components/button/BtnLink';
+import TrashIcon from '../../../../../assets/icons/TrashIcon';
 import FileDarianne from '../../../../../components/card/FileDarianne';
 import OldFileDariane from '../../../../../components/card/OldFileDariane';
 import DossierLayout from '../../DossierLayout';
@@ -18,6 +21,7 @@ const NouveauPermisList = ({title}) => {
             slug: 'permis-1',
             nom: 'Kabore',
             prenom: 'Edmond',
+            date: "12/04/2022",
             statut: 2,
             ecole: 'Prestige Ecole',
             categorie: 'Permis A',
@@ -29,6 +33,7 @@ const NouveauPermisList = ({title}) => {
             nom: 'Ouedraogo',
             prenom: 'Alice',
             statut: 1,
+            date: "12/04/2022",
             ecole: 'Awsome Ecole B',
             categorie: 'Permis C',
         },
@@ -39,6 +44,7 @@ const NouveauPermisList = ({title}) => {
             nom: 'Sanon',
             prenom: 'Madou',
             statut: 2,
+            date: "12/04/2022",
             ecole: 'Incredible Ecole',
             categorie: 'Permis C',
         },
@@ -49,6 +55,7 @@ const NouveauPermisList = ({title}) => {
             nom: 'Dabiré',
             prenom: 'Alexandra',
             statut: 0,
+            date: "12/04/2022",
             ecole: 'Incredible Ecole',
             categorie: 'Permis B1',
         },
@@ -59,6 +66,7 @@ const NouveauPermisList = ({title}) => {
             nom: 'Ouattara',
             prenom: 'Pauline',
             statut: 1,
+            date: "12/04/2022",
             ecole: 'Incredible Ecole',
             categorie: 'Permis C1',
         },
@@ -69,6 +77,7 @@ const NouveauPermisList = ({title}) => {
             nom: 'Koné',
             prenom: 'Jean Philippe',
             statut: 1,
+            date: "12/04/2022",
             ecole: 'Incredible Ecole',
             categorie: 'Permis A1',
         },
@@ -129,17 +138,45 @@ const NouveauPermisList = ({title}) => {
        })
        setTableElement(element);
     }
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={"/gestion-des-dossiers/nouveaux-permis"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/creer/nouveaux-permis"}>
+                                <AddIcon/>  {"Ajouter"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <ExportIcon/> {"Exporter"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <PrintIcon/> {"Imprimer"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--danger`}>
+                            <button type='button'>
+                                <TrashIcon/> {"Supprimer"}
+                            </button>
+                        </li>
+                    </ul>);
     return (
-        <DossierLayout here={'list'}>
-            <FileDarianne actuel={'Gestion des Nouveaux Permis'}>
+        <DossierLayout actions={actions}>
+            <FileDarianne actuel={'Nouveaux permis'}>
                 <OldFileDariane link={'/'}>
                     Accueil
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers'}>
-                    Gestion des Dossiers
+                    Gestion des dossiers
                 </OldFileDariane>
             </FileDarianne>
             <div className='sigepec-module-dossier-list'>
+                
                 <div className='sigepec-module-dossier-list__head has--flex_between is--large'>
                     <h2>Liste des nouveaux permis</h2>
                     <div className='sigepec-module-dossier-list__actions has--flex'>
@@ -152,9 +189,6 @@ const NouveauPermisList = ({title}) => {
                                 <SortIcon/>
                             </button>
                         </div>
-                        <BtnLink link={'/gestion-des-dossiers/creer/nouveaux-permis'} style={'is--primary'}>
-                            <AddIcon/>  <span>Ajouter un nouveau dossier</span>
-                        </BtnLink>
                     </div>
                 </div>
                 <div className='sigepec-module-dossier-list__container is--large'>
@@ -164,7 +198,7 @@ const NouveauPermisList = ({title}) => {
                                 -
                             </div>
                             <div className='sigepec-table__column is--lilmed' onClick={() => {orderListByDossier()}}>
-                                <strong>Numéro de dossier</strong>
+                                <strong>N° dossier</strong>
                             </div>
                             <div className='sigepec-table__column is--auto' onClick={() => {orderListByName()}}>
                                 <strong>Nom et Prénoms</strong>
@@ -174,6 +208,9 @@ const NouveauPermisList = ({title}) => {
                             </div>
                             <div className='sigepec-table__column is--lilmed' onClick={() => {orderListBySchool()}}>
                                 <strong>Auto-Ecole</strong>
+                            </div>
+                            <div className='sigepec-table__column is--lilmed' onClick={() => {orderListBySchool()}}>
+                                <strong>Date de depôt</strong>
                             </div>
                             <div className='sigepec-table__column is--lilmed' onClick={() => {orderListByCategorie()}}>
                                 <strong>Catégorie</strong>
@@ -186,7 +223,7 @@ const NouveauPermisList = ({title}) => {
                             tableElement.map((element) => (
                                 <div className='sigepec-table__body' key={element.id}>
                                     <div className='sigepec-table__column is--little'>
-                                        {element.id}
+                                        <input type="checkbox" />
                                     </div>
                                     <div className='sigepec-table__column is--lilmed'>
                                         <span>{element.dossier}</span>
@@ -205,7 +242,7 @@ const NouveauPermisList = ({title}) => {
                                                             <span className='sigepec-tag is--success'>Validé</span>
                                                         ) : (
 
-                                                            <span className='sigepec-tag is--error'>Erreur</span>
+                                                            <span className='sigepec-tag is--error'>Rejeté</span>
                                                         )
                                                     }
                                                 </>
@@ -217,6 +254,9 @@ const NouveauPermisList = ({title}) => {
                                         <span>{element.ecole}</span>
                                     </div>
                                     <div className='sigepec-table__column is--lilmed'>
+                                        <span>{element.date}</span>
+                                    </div>
+                                    <div className='sigepec-table__column is--lilmed'>
                                         <span>{element.categorie}</span>
                                     </div>
                                     <div className='sigepec-table__column is--little'>
@@ -224,9 +264,21 @@ const NouveauPermisList = ({title}) => {
                                             <OptionIcon/>
                                         </button>
                                         <div className='sigepec-table__option' id={element.slug}>
+                                            <Link to={`/gestion-des-dossiers/voir/nouveaux-permis/${element.slug}`}>
+                                                Editer
+                                            </Link>
                                             <Link to={`/gestion-des-dossiers/modifier/nouveaux-permis/${element.slug}`}>
                                                 Modifier
                                             </Link>
+                                            <button type='button'>
+                                                Valider
+                                            </button>
+                                            <button type='button'>
+                                                Imprimer
+                                            </button>
+                                            <button type='button'>
+                                                Exporter
+                                            </button>
                                             <button type='button'>
                                                 Supprimer
                                             </button>

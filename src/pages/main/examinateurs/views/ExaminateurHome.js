@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AddIcon from '../../../../assets/icons/AddIcon';
+import BanIcon from '../../../../assets/icons/BanIcon';
 import CancelIcon from '../../../../assets/icons/CancelIcon';
 import CheckIcon from '../../../../assets/icons/CheckIcon';
+import EditIcon from '../../../../assets/icons/EditIcon';
+import EventIcon from '../../../../assets/icons/EventIcon';
 import OptionIcon from '../../../../assets/icons/OptionIcon';
 import SearcIcon from '../../../../assets/icons/SearcIcon';
 import SortIcon from '../../../../assets/icons/SortIcon';
@@ -107,6 +110,7 @@ const ExaminateurHome = ({title}) => {
     const removeModal = (id) => {
         document.getElementById(id).classList.remove('is--show');
     }
+
     return (
         <ExanimateurLayout>
             <FileDarianne actuel={'Gestion des Examinateurs'}>
@@ -312,13 +316,13 @@ const ExaminateurHome = ({title}) => {
                         <div className='sigepec-h-bar'></div>
                         <div className='sigepec-module-add-files'>
                             <button type='button' className='sigepec-module-list__action is--large has--flex' onClick={() => {editModal('edit-modal', number)}}>
-                                <CheckIcon/> <span>Modifier les informations de l'examinateur</span>
+                                <EditIcon/> <span>Modifier les informations de l'examinateur</span>
                             </button>
                             <Link to={`/gestion-des-examinateurs/etats/${slug}`} className="sigepec-module-list__action is--large has--flex">
-                                <CheckIcon/> <span>Voir ses états</span>
+                                <EventIcon/> <span>Voir ses états</span>
                             </Link>
                             <button type='button' className='sigepec-module-list__action is--large has--flex'>
-                                <CheckIcon/> <span>Désactiver l'examinateur</span>
+                                <BanIcon/> <span>Désactiver l'examinateur</span>
                             </button>
                         </div>
                     </div>

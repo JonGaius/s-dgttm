@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 import CheckIcon from '../../../../../../assets/icons/CheckIcon';
+import ListIcon from '../../../../../../assets/icons/ListIcon';
 import TimerIcon from '../../../../../../assets/icons/TimerIcon';
 import FormBtn from '../../../../../../components/button/FormBtn';
 import FileDarianne from '../../../../../../components/card/FileDarianne';
@@ -57,17 +59,25 @@ const ExtensionCreerStepTwo = ({title}) => {
             console.log("error");
         }
     }
+
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={"/gestion-des-dossiers/extensions"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                    </ul>);
     return (
-        <DossierLayout here={'add'}>
-            <FileDarianne actuel={'Ajout d\'un dossier Extension'}>
+        <DossierLayout actions={actions}>
+            <FileDarianne actuel={'Ajout d\'une extension'}>
                 <OldFileDariane link={'/'}>
                     Accueil
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers'}>
-                    Gestion des Dossiers
+                    Gestion des dossiers
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers/extensions'}>
-                    Gestion des Dossiers Extension
+                    Extension
                 </OldFileDariane>
             </FileDarianne>
             <div className='sigepec-module-add is--large has--flex_between'>

@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import AddIcon from '../../../../../assets/icons/AddIcon';
 import CancelIcon from '../../../../../assets/icons/CancelIcon';
+import ExportIcon from '../../../../../assets/icons/ExportIcon';
+import EditIcon from '../../../../../assets/icons/EditIcon';
+import DossierIcon from '../../../../../assets/icons/ic/DossierIcon';
+import ListIcon from '../../../../../assets/icons/ListIcon';
+import PrintIcon from '../../../../../assets/icons/PrintIcon';
+import TrashIcon from '../../../../../assets/icons/TrashIcon';
 import FileDarianne from '../../../../../components/card/FileDarianne';
 import FilePreview from '../../../../../components/card/FilePreview';
 import OldFileDariane from '../../../../../components/card/OldFileDariane';
@@ -12,7 +19,7 @@ import DossierLayout from '../../DossierLayout';
 
 const RemplacementIdCardValider = ({title}) => {
     document.querySelector('title').innerHTML = title + ' | SIGEPEC';
-    let params = useParams();
+    let slug = useParams();
     const [numIdcard, setNumIdcard] = useState('');
     const [reference, setReference] = useState('');
     const [dateAuth, setDateAuth] = useState('');
@@ -79,21 +86,55 @@ const RemplacementIdCardValider = ({title}) => {
     const handleSubmit = (e) => {
 
     }
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/remplacement-idcard"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/creer/remplacement-idcard"}>
+                                <AddIcon/>  {"Ajouter"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={`/gestion-des-dossiers/voir/remplacement-idcard/${slug.slug}`}>
+                                <DossierIcon/>  {"Editer"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={`/gestion-des-dossiers/modifier/remplacement-idcard/${slug.slug}`}>
+                                <EditIcon/>  {"Modifier"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <ExportIcon/> {"Exporter"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <PrintIcon/> {"Imprimer"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--danger`}>
+                            <button type='button'>
+                                <TrashIcon/> {"Supprimer"}
+                            </button>
+                        </li>
+                    </ul>);
     return (
-        <DossierLayout here={'validation'}>
+        <DossierLayout actions={actions}>
 
-            <FileDarianne actuel={'Validation d\'un dossier Remplacement Idcard'}>
+            <FileDarianne actuel={'Validation d\'un remplacement Idcard'}>
                 <OldFileDariane link={'/'}>
                     Accueil
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers'}>
-                    Gestion des Dossiers
+                    Gestion des dossiers
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers/remplacement-idcard'}>
-                    Gestion des Dossiers Remplacement idCard
-                </OldFileDariane>
-                <OldFileDariane link={'/gestion-des-dossiers/validation-de-dossier/remplacement-idcard'}>
-                    Gestion des Dossier Remplacement idCard en attente de validation
+                    Remplacement idCard
                 </OldFileDariane>
             </FileDarianne>
             <div className='sigepec-module-add__head is--large has--flex_between'>
@@ -164,6 +205,11 @@ const RemplacementIdCardValider = ({title}) => {
                                 Modifier les informations
                             </button>
                         </div>
+                    </div>
+                    <div className="sigepec-module-add-section__container">
+                        <h2>Le saviez-vous</h2>
+                        <div className='sigepec-h-bar'></div>
+                        
                     </div>
                 </div>
             </div>

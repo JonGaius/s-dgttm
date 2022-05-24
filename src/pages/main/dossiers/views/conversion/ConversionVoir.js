@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import AddIcon from '../../../../../assets/icons/AddIcon';
 import CheckIcon from '../../../../../assets/icons/CheckIcon';
 import EditIcon from '../../../../../assets/icons/EditIcon';
+import ExportIcon from '../../../../../assets/icons/ExportIcon';
+import PermisIcon from '../../../../../assets/icons/ic/PermisIcon';
+import ListIcon from '../../../../../assets/icons/ListIcon';
+import PrintIcon from '../../../../../assets/icons/PrintIcon';
 import SavedIcon from '../../../../../assets/icons/SavedIcon';
 import TrashIcon from '../../../../../assets/icons/TrashIcon';
 import FileDarianne from '../../../../../components/card/FileDarianne';
@@ -11,7 +16,7 @@ import DossierLayout from '../../DossierLayout';
 
 const ConversionVoir = ({title}) => {
     document.querySelector('title').innerHTML = title + ' | SIGEPEC';
-    let params = useParams();
+    let slug = useParams();
     const [typeP, setTypeP] = useState('');
     const [nom, setNom] = useState('');
     const [prenom, setPrenom] = useState('');
@@ -44,22 +49,59 @@ const ConversionVoir = ({title}) => {
     const [scanCertificat, setScanCertificat] = useState('');
     const [scanPermis, setScanPermis] = useState('');
 
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={"/gestion-des-dossiers/conversions"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/creer/conversions"}>
+                                <AddIcon/>  {"Ajouter"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={`/gestion-des-dossiers/modifier/conversions/${slug.slug}`}>
+                                <EditIcon/>  {"Modifier"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={`/gestion-des-dossiers/valider/conversions/${slug.slug}`}>
+                                <CheckIcon/>  {"Valider"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <ExportIcon/> {"Exporter"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <PrintIcon/> {"Imprimer"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--danger`}>
+                            <button type='button'>
+                                <TrashIcon/> {"Supprimer"}
+                            </button>
+                        </li>
+                    </ul>);
     return (
         
-        <DossierLayout here={'list'}>
-        <FileDarianne actuel={'Apercu du Dossier Conversion'}>
-            <OldFileDariane link={'/'}>
-                Accueil
-            </OldFileDariane>
-            <OldFileDariane link={'/gestion-des-dossiers'}>
-                Gestion des Dossiers
-            </OldFileDariane>
-            <OldFileDariane link={'/gestion-des-dossiers/conversions'}>
-                Gestion des Dossiers Conversion
-            </OldFileDariane>
-        </FileDarianne>
+        <DossierLayout actions={actions} >
+            <FileDarianne actuel={"Apercu d'une conversion"}>
+                <OldFileDariane link={'/'}>
+                    Accueil
+                </OldFileDariane>
+                <OldFileDariane link={'/gestion-des-dossiers'}>
+                    Gestion des dossiers
+                </OldFileDariane>
+                <OldFileDariane link={'/gestion-des-dossiers/conversions'}>
+                    Conversion
+                </OldFileDariane>
+            </FileDarianne>
             <div className='sigepec-module-add__head is--large has--flex_between'>
-                <h1>Voir les informations</h1>
+                <h1>Jonh Doe</h1>
             </div>
 
             <div className='sigepec-module-add is--large has--flex_between'>
@@ -229,22 +271,9 @@ const ConversionVoir = ({title}) => {
                         </div>
                     </div>
                     <div className="sigepec-module-add-section__container">
-                        <h2>Que souhaitez-vous faire</h2>
+                        <h2>Le saviez-vous</h2>
                         <div className='sigepec-h-bar'></div>
-                        <div className='sigepec-module-add-files'>
-                            <Link to={`/gestion-des-dossiers/modifier/conversions/${params.slug}`} className="sigepec-module-list__action is--large has--flex">
-                                <EditIcon/> <span>Modifier les informations du dossier</span>
-                            </Link>
-                            <Link to={`/gestion-des-dossiers/valider/conversions/${params.slug}`} className="sigepec-module-list__action is--large has--flex">
-                                <CheckIcon/> <span>Valider le dossier</span>
-                            </Link>
-                            <button type='button' className='sigepec-module-list__action is--large has--flex'>
-                                <SavedIcon/> <span>Archiver le dossier</span>
-                            </button>
-                            <button type='button' className='sigepec-module-list__action is--large has--flex'>
-                                <TrashIcon/> <span>Supprimer le dossier</span>
-                            </button>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

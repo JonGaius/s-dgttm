@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import AddIcon from '../../../../../assets/icons/AddIcon';
 import CheckIcon from '../../../../../assets/icons/CheckIcon';
 import EditIcon from '../../../../../assets/icons/EditIcon';
-import SavedIcon from '../../../../../assets/icons/SavedIcon';
+import ExportIcon from '../../../../../assets/icons/ExportIcon';
+import ListIcon from '../../../../../assets/icons/ListIcon';
+import PrintIcon from '../../../../../assets/icons/PrintIcon';
 import TrashIcon from '../../../../../assets/icons/TrashIcon';
 import FileDarianne from '../../../../../components/card/FileDarianne';
 import FilePreview from '../../../../../components/card/FilePreview';
@@ -12,7 +15,7 @@ import DossierLayout from '../../DossierLayout';
 
 const ExtensionVoir = ({title}) => {
     document.querySelector('title').innerHTML = title + ' | SIGEPEC';
-    let params = useParams();
+    let slug = useParams();
 
     const [numPermis, setNumPermis] = useState('');
     const [derExtension, setDerExtension] = useState('');
@@ -30,9 +33,46 @@ const ExtensionVoir = ({title}) => {
     const [scanBirth, setScanBirth] = useState('');
     const [scanCertificat, setScanCertificat] = useState('');
 
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={"/gestion-des-dossiers/extensions"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/creer/extensions"}>
+                                <AddIcon/>  {"Ajouter"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={`/gestion-des-dossiers/modifier/extensions/${slug.slug}`}>
+                                <EditIcon/>  {"Modifier"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={`/gestion-des-dossiers/valider/extensions/${slug.slug}`}>
+                                <CheckIcon/>  {"Valider"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <ExportIcon/> {"Exporter"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <PrintIcon/> {"Imprimer"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--danger`}>
+                            <button type='button'>
+                                <TrashIcon/> {"Supprimer"}
+                            </button>
+                        </li>
+                    </ul>);
     return (
-        <DossierLayout here={'list'}>
-            <FileDarianne actuel={'Aperçu d\'un dossier Extension'}>
+        <DossierLayout actions={actions}>
+            <FileDarianne actuel={'Aperçu d\'une extension'}>
                 <OldFileDariane link={'/'}>
                     Accueil
                 </OldFileDariane>
@@ -40,18 +80,18 @@ const ExtensionVoir = ({title}) => {
                     Gestion des Dossiers
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers/extensions'}>
-                    Gestion des Dossiers Extension
+                    Extensions
                 </OldFileDariane>
             </FileDarianne>
             <div className='sigepec-module-add__head is--large has--flex_between'>
-                <h1>Voir les informations</h1>
+                <h1>Extention N° 34000</h1>
             </div>
 
             <div className='sigepec-module-add is--large has--flex_between'>
                 <div className="sigepec-module-add__section">
                     <div className="sigepec-module-add-section__container">
                         <div className='sigepec-module-add-section__box'>
-                        <h2>Informations personnelles du candidat</h2>
+                        <h2>Informations du permis</h2>
                             <div className='sigepec-h-bar'></div>
                             <div className="sigepec-module-add-apercu__items has--flex_between is--large">
                                 <div className="sigepec-module-add-apercu__item is--large has--flex_between">
@@ -123,22 +163,9 @@ const ExtensionVoir = ({title}) => {
                         </div>
                     </div>
                     <div className="sigepec-module-add-section__container">
-                        <h2>Que souhaitez-vous faire</h2>
+                        <h2>Le saviez-vous</h2>
                         <div className='sigepec-h-bar'></div>
-                        <div className='sigepec-module-add-files'>
-                            <Link to={`/gestion-des-dossiers/modifier/extensions/${params.slug}`} className="sigepec-module-list__action is--large has--flex">
-                                <EditIcon/> <span>Modifier les informations du dossier</span>
-                            </Link>
-                            <Link to={`/gestion-des-dossiers/valider/extensions/${params.slug}`} className="sigepec-module-list__action is--large has--flex">
-                                <CheckIcon/> <span>Valider le dossier</span>
-                            </Link>
-                            <button type='button' className='sigepec-module-list__action is--large has--flex'>
-                                <SavedIcon/> <span>Archiver le dossier</span>
-                            </button>
-                            <button type='button' className='sigepec-module-list__action is--large has--flex'>
-                                <TrashIcon/> <span>Supprimer le dossier</span>
-                            </button>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

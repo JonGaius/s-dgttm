@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import AddIcon from '../../../../assets/icons/AddIcon';
 import CancelIcon from '../../../../assets/icons/CancelIcon';
 import CheckIcon from '../../../../assets/icons/CheckIcon';
+import TrashIcon from '../../../../assets/icons/TrashIcon';
+import PrintIcon from '../../../../assets/icons/PrintIcon';
 import OptionIcon from '../../../../assets/icons/OptionIcon';
 import SearcIcon from '../../../../assets/icons/SearcIcon';
 import SortIcon from '../../../../assets/icons/SortIcon';
@@ -12,6 +14,7 @@ import OldFileDariane from '../../../../components/card/OldFileDariane';
 import NormalTextField from '../../../../components/input/NormalTextField';
 import SelectField from '../../../../components/input/SelectField';
 import ExamenLayout from '../ExamenLayout';
+import ExportIcon from '../../../../assets/icons/ExportIcon';
 
 const Sujet = ({title}) => {
     const activeModal = (id) => {
@@ -324,16 +327,16 @@ const Sujet = ({title}) => {
                         <div className='sigepec-h-bar'></div>
                         <div className='sigepec-module-add-files'>
                             <button type='button' className='sigepec-module-list__action is--large has--flex'>
-                                <CheckIcon/> <span>Imprimer le sujet</span>
+                                <PrintIcon/> <span>Imprimer le sujet</span>
                             </button>
                             <button type='button' className='sigepec-module-list__action is--large has--flex'>
-                                <CheckIcon/> <span>Exporter le sujet</span>
+                                <ExportIcon/> <span>Exporter le sujet</span>
                             </button>
                             <button type='button' className='sigepec-module-list__action is--large has--flex'>
                                 <CheckIcon/> <span>Valider le sujet</span>
                             </button>
                             <button type='button' className='sigepec-module-list__action is--large has--flex'>
-                                <CheckIcon/> <span>Supprimer le sujet</span>
+                                <TrashIcon/> <span>Supprimer le sujet</span>
                             </button>
                         </div>
                     </div>

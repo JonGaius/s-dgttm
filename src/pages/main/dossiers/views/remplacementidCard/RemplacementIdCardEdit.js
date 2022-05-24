@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import AddIcon from '../../../../../assets/icons/AddIcon';
 import CheckIcon from '../../../../../assets/icons/CheckIcon';
+import ExportIcon from '../../../../../assets/icons/ExportIcon';
+import DossierIcon from '../../../../../assets/icons/ic/DossierIcon';
+import ListIcon from '../../../../../assets/icons/ListIcon';
+import PrintIcon from '../../../../../assets/icons/PrintIcon';
+import TrashIcon from '../../../../../assets/icons/TrashIcon';
 import FormBtn from '../../../../../components/button/FormBtn';
 import FileDarianne from '../../../../../components/card/FileDarianne';
 import OldFileDariane from '../../../../../components/card/OldFileDariane';
@@ -16,7 +23,7 @@ const RemplacementIdCardEdit = ({title}) => {
     const [dateAuth, setDateAuth] = useState('');
     const [dateDelivrance, setDateDelivrance] = useState('');
     const [lieuDelivrance, setLieuDelivrance] = useState('');
-
+    let slug = useParams();
     let optionProvince =[
         {
             value: 'Hauts Bassins',
@@ -71,17 +78,55 @@ const RemplacementIdCardEdit = ({title}) => {
     const handleSubmit = (e) => {
 
     }
+
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/remplacement-idcard"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/creer/remplacement-idcard"}>
+                                <AddIcon/>  {"Ajouter"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={`/gestion-des-dossiers/voir/remplacement-idcard/${slug.slug}`}>
+                                <DossierIcon/>  {"Editer"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={`/gestion-des-dossiers/valider/remplacement-idcard/${slug.slug}`}>
+                                <CheckIcon/>  {"Valider"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <ExportIcon/> {"Exporter"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <PrintIcon/> {"Imprimer"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--danger`}>
+                            <button type='button'>
+                                <TrashIcon/> {"Supprimer"}
+                            </button>
+                        </li>
+                    </ul>);
     return (
-        <DossierLayout here={'list'}>
-            <FileDarianne actuel={'Modification d\'un dossier Remplacement Idcard'}>
+        <DossierLayout actions={actions}>
+            <FileDarianne actuel={'Modification d\'un remplacement Idcard'}>
                 <OldFileDariane link={'/'}>
                     Accueil
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers'}>
-                    Gestion des Dossiers
+                    Gestion des dossiers
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers/remplacement-idcard'}>
-                    Gestion des Dossiers Remplacement idCard
+                    Remplacement idCard
                 </OldFileDariane>
             </FileDarianne>
             <div className='sigepec-module-add is--large has--flex_between'>
@@ -93,6 +138,11 @@ const RemplacementIdCardEdit = ({title}) => {
                                 <CheckIcon/> <span>Informations Dossier</span>
                             </StepCard>
                         </div>
+                    </div>
+                    <div className="sigepec-module-add-section__container">
+                        <h2>Le saviez-vous</h2>
+                        <div className='sigepec-h-bar'></div>
+                        
                     </div>
                 </div>
                 <div className='sigepec-module-add__form'>

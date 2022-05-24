@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AddIcon from '../../../../../assets/icons/AddIcon';
+import ExportIcon from '../../../../../assets/icons/ExportIcon';
+import ListIcon from '../../../../../assets/icons/ListIcon';
 import OptionIcon from '../../../../../assets/icons/OptionIcon';
+import PrintIcon from '../../../../../assets/icons/PrintIcon';
 import SearcIcon from '../../../../../assets/icons/SearcIcon';
 import SortIcon from '../../../../../assets/icons/SortIcon';
+import TrashIcon from '../../../../../assets/icons/TrashIcon';
 import BtnLink from '../../../../../components/button/BtnLink';
 import FileDarianne from '../../../../../components/card/FileDarianne';
 import OldFileDariane from '../../../../../components/card/OldFileDariane';
@@ -129,14 +133,41 @@ const ConversionList = ({title}) => {
        })
        setTableElement(element);
     }
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={"/gestion-des-dossiers/conversions"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/creer/conversions"}>
+                                <AddIcon/>  {"Ajouter"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <ExportIcon/> {"Exporter"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <PrintIcon/> {"Imprimer"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--danger`}>
+                            <button type='button'>
+                                <TrashIcon/> {"Supprimer"}
+                            </button>
+                        </li>
+                    </ul>);
     return (
-        <DossierLayout here={'list'}>
-            <FileDarianne actuel={'Gestion des dossiers Conversion'}>
+        <DossierLayout actions={actions}>
+            <FileDarianne actuel={'Conversion'}>
                 <OldFileDariane link={'/'}>
                     Accueil
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers'}>
-                    Gestion des Dossiers
+                    Gestion des dossiers
                 </OldFileDariane>
             </FileDarianne>
             <div className='sigepec-module-dossier-list'>
@@ -152,9 +183,6 @@ const ConversionList = ({title}) => {
                                 <SortIcon/>
                             </button>
                         </div>
-                        <BtnLink link={'/gestion-des-dossiers/creer/conversions'} style={'is--primary'}>
-                            <AddIcon/>  <span>Ajouter un nouveau dossier</span>
-                        </BtnLink>
                     </div>
                 </div>
                 <div className='sigepec-module-dossier-list__container is--large'>
@@ -186,7 +214,7 @@ const ConversionList = ({title}) => {
                             tableElement.map((element) => (
                                 <div className='sigepec-table__body' key={element.id}>
                                     <div className='sigepec-table__column is--little'>
-                                        {element.id}
+                                        <input type="checkbox" />
                                     </div>
                                     <div className='sigepec-table__column is--lilmed'>
                                         <span>{element.dossier}</span>
@@ -205,7 +233,7 @@ const ConversionList = ({title}) => {
                                                             <span className='sigepec-tag is--success'>Validé</span>
                                                         ) : (
 
-                                                            <span className='sigepec-tag is--error'>Erreur</span>
+                                                            <span className='sigepec-tag is--error'>Rejeté</span>
                                                         )
                                                     }
                                                 </>
@@ -224,9 +252,21 @@ const ConversionList = ({title}) => {
                                             <OptionIcon/>
                                         </button>
                                         <div className='sigepec-table__option' id={element.slug}>
+                                            <Link to={`/gestion-des-dossiers/voir/conversions/${element.slug}`}>
+                                                Editer
+                                            </Link>
                                             <Link to={`/gestion-des-dossiers/modifier/conversions/${element.slug}`}>
                                                 Modifier
                                             </Link>
+                                            <Link to={`/gestion-des-dossiers/valider/conversions/${element.slug}`}>
+                                                Modifier
+                                            </Link>
+                                            <button type='button'>
+                                                Imprimer
+                                            </button>
+                                            <button type='button'>
+                                                Exporter
+                                            </button>
                                             <button type='button'>
                                                 Supprimer
                                             </button>

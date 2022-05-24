@@ -11,9 +11,7 @@ import IdCardIcon from '../../../assets/icons/ic/idCardIcon';
 import PermisIcon from '../../../assets/icons/ic/PermisIcon';
 import QuestionIcon from '../../../assets/icons/ic/QuestionIcon';
 import StatIcon from '../../../assets/icons/ic/StatIcon';
-import SettingIcon from '../../../assets/icons/SettingIcon';
 import ModuleCard from '../../../components/card/ModuleCard';
-import MultiSelectField from '../../../components/input/MultiSelectField';
 import MainLayout from '../../../components/layout/main/MainLayout';
 
 const HomePage = ({title}) => {
@@ -80,11 +78,6 @@ const HomePage = ({title}) => {
             link:  '/configuration',
         }
     ];
-    const options = [
-        {value: "p", label: "po1"},
-        {value: "p2", label: "po2"},
-        {value: "p3", label: "po3"},
-    ]
     return (
         <MainLayout>
             <section className='sigepec-home is--large'>

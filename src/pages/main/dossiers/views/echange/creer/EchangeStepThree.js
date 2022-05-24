@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import CheckIcon from '../../../../../../assets/icons/CheckIcon';
+import ListIcon from '../../../../../../assets/icons/ListIcon';
 import TimerIcon from '../../../../../../assets/icons/TimerIcon';
 import FormBtn from '../../../../../../components/button/FormBtn';
 import FileDarianne from '../../../../../../components/card/FileDarianne';
@@ -77,17 +78,24 @@ const EchangeStepThree = ({title}) => {
         }
         
     }
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={"/gestion-des-dossiers/echange"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                    </ul>);
     return (
-        <DossierLayout here={'add'}> 
-            <FileDarianne actuel={'Ajout d\'un dossier Echange'}>
+        <DossierLayout actions={actions}> 
+            <FileDarianne actuel={'Ajout d\'un echange'}>
                 <OldFileDariane link={'/'}>
                     Accueil
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers'}>
-                    Gestion des Dossiers
+                    Gestion des dossiers
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers/echange'}>
-                    Gestion des Dossiers Echange
+                    Echange
                 </OldFileDariane>
             </FileDarianne>
             <div className='sigepec-module-add is--large has--flex_between'>

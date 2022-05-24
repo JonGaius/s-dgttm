@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import AddIcon from '../../../../../assets/icons/AddIcon';
 import BackIcon from '../../../../../assets/icons/BackIcon';
 import CancelIcon from '../../../../../assets/icons/CancelIcon';
 import CheckIcon from '../../../../../assets/icons/CheckIcon';
+import EditIcon from '../../../../../assets/icons/EditIcon';
+import ExportIcon from '../../../../../assets/icons/ExportIcon';
+import ListIcon from '../../../../../assets/icons/ListIcon';
+import PrintIcon from '../../../../../assets/icons/PrintIcon';
+import TrashIcon from '../../../../../assets/icons/TrashIcon';
+import DossierIcon from '../../../../../assets/icons/ic/DossierIcon';
 import FileDarianne from '../../../../../components/card/FileDarianne';
 import FilePreview from '../../../../../components/card/FilePreview';
 import OldFileDariane from '../../../../../components/card/OldFileDariane';
@@ -269,6 +276,44 @@ const NouveauPermisEdit = ({title}) => {
         // navigate('/gestion-des-dossiers/nouveaux-permis');
     }
 
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/nouveaux-permis"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/creer/nouveaux-permis"}>
+                                <AddIcon/>  {"Ajouter"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={`/gestion-des-dossiers/voir/nouveaux-permis/${slug.slug}`}>
+                                <DossierIcon/>  {"Editer"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={`/gestion-des-dossiers/valider/nouveaux-permis/${slug.slug}`}>
+                                <CheckIcon/>  {"Valider"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <ExportIcon/> {"Exporter"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <PrintIcon/> {"Imprimer"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--danger`}>
+                            <button type='button'>
+                                <TrashIcon/> {"Supprimer"}
+                            </button>
+                        </li>
+                    </ul>);
+
     useEffect(() => {
         if(passport){
             setHide(2)
@@ -277,16 +322,16 @@ const NouveauPermisEdit = ({title}) => {
         }
     }, [])
     return (
-        <DossierLayout here={'list'}> 
-            <FileDarianne actuel={'Modification d\'un Dossier Nouveau Permis'}>
+        <DossierLayout actions={actions}> 
+            <FileDarianne actuel={'Modification d\'un nouveau permis'}>
                 <OldFileDariane link={'/'}>
                     Accueil
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers'}>
-                    Gestion des Dossiers
+                    Gestion des dossiers
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers/nouveaux-permis'}>
-                    Gestion des Dossiers Nouveau Permis
+                    Nouveau permis
                 </OldFileDariane>
             </FileDarianne>
             <div className='sigepec-module-add__head is--large has--flex_between'>
@@ -463,6 +508,11 @@ const NouveauPermisEdit = ({title}) => {
                                 Modifier les informations
                             </button>
                         </div>
+                    </div>
+                    <div className="sigepec-module-add-section__container">
+                        <h2>Informations</h2>
+                        <div className='sigepec-h-bar'></div>
+                        
                     </div>
                 </div>
             </div>

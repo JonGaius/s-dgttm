@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import ListIcon from '../../../../assets/icons/ListIcon';
 import FileDarianne from '../../../../components/card/FileDarianne';
 import ModuleCard from '../../../../components/card/ModuleCard';
 import OldFileDariane from '../../../../components/card/OldFileDariane';
@@ -35,10 +37,10 @@ const DossierHome = ({title}) => {
             name: 'Dossier de duplicata',
             link: 'duplicata'
         },
-        {
-            name: 'Dossier de duplicata idCard',
-            link: 'duplicata-idcard'
-        },
+        // {
+        //     name: 'Dossier de duplicata idCard',
+        //     link: 'duplicata-idcard'
+        // },
         {
             name: 'Dossier de remplacement idCard',
             link: 'remplacement-idcard'
@@ -47,10 +49,32 @@ const DossierHome = ({title}) => {
             name: 'Dossier de plaintes',
             link: 'plaintes'
         },
+        {
+            name: 'Dossier de suspensions de permis',
+            link: 'suspensions'
+        },
     ]
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/reception"}>
+                                {"Reception"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/traitement"}>
+                                {"Traitement"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/retour"}>
+                                {"Retour"}
+                            </Link>
+                        </li>
+                    </ul>);
+                            
     return (
-        <DossierLayout here={'list'}>
-            <FileDarianne actuel={'Gestion des Dossiers'}>
+        <DossierLayout actions={actions}>
+            <FileDarianne actuel={'Gestion des dossiers'}>
                 <OldFileDariane link={'/'}>
                     Accueil
                 </OldFileDariane>
@@ -60,7 +84,7 @@ const DossierHome = ({title}) => {
                     lists.map(list => (
                         <div className='sigepec-module-dossier-accueil__item' key={list.name}>
                             <ModuleCard link={`/gestion-des-dossiers/${list.link}`}>
-                                <span>{list.name}</span>
+                               <ListIcon/> <span>{list.name}</span>
                             </ModuleCard>
                         </div>
                     ))

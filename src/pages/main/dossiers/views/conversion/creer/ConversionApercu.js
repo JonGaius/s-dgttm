@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import CancelIcon from '../../../../../../assets/icons/CancelIcon';
+import ListIcon from '../../../../../../assets/icons/ListIcon';
 import FileDarianne from '../../../../../../components/card/FileDarianne';
 import FilePreview from '../../../../../../components/card/FilePreview';
 import OldFileDariane from '../../../../../../components/card/OldFileDariane';
@@ -230,9 +231,6 @@ const ConversionApercu = (title) => {
     const changePostale = (value) => {
         setPostale(value)
     }
-    const changePhone = (value) => {
-        setPhone(value)
-    }
     const changeProvince = (value) => {
         setProvince(value)
     }
@@ -267,17 +265,25 @@ const ConversionApercu = (title) => {
         navigate('/gestion-des-dossiers/conversions');
     }
 
+
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={"/gestion-des-dossiers/conversions"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                    </ul>);
     return (
-        <DossierLayout here={'add'}> 
-            <FileDarianne actuel={'Ajout d\'un Dossier Conversion'}>
+        <DossierLayout actions={actions}> 
+            <FileDarianne actuel={'Ajout d\'une conversion'}>
                 <OldFileDariane link={'/'}>
                     Accueil
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers'}>
-                    Gestion des Dossiers
+                    Gestion des dossiers
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers/conversions'}>
-                    Gestion des Dossiers Conversion
+                   Conversion
                 </OldFileDariane>
             </FileDarianne>
             <div className='sigepec-module-add__head is--large has--flex_between'>

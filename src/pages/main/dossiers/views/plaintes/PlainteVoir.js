@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import AddIcon from '../../../../../assets/icons/AddIcon';
 import CheckIcon from '../../../../../assets/icons/CheckIcon';
 import EditIcon from '../../../../../assets/icons/EditIcon';
+import ExportIcon from '../../../../../assets/icons/ExportIcon';
+import ListIcon from '../../../../../assets/icons/ListIcon';
+import PrintIcon from '../../../../../assets/icons/PrintIcon';
 import SavedIcon from '../../../../../assets/icons/SavedIcon';
 import TrashIcon from '../../../../../assets/icons/TrashIcon';
 import FileDarianne from '../../../../../components/card/FileDarianne';
@@ -10,26 +14,64 @@ import DossierLayout from '../../DossierLayout';
 
 const PlainteVoir = ({title}) => {
     document.querySelector('title').innerHTML = title + ' | SIGEPEC';
-    let params = useParams();
+    let slug = useParams();
     const [numIdCard, setNumIdCard] = useState('');
     const [objet, setObjet] = useState('');
     const [examen, setExamen] = useState('');
     const [reference, setReference] = useState('');
+
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={"/gestion-des-dossiers/remplacement-idcard"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/creer/plaintes"}>
+                                <AddIcon/>  {"Ajouter"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={`/gestion-des-dossiers/modifier/plaintes/${slug.slug}`}>
+                                <EditIcon/>  {"Modifier"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={`/gestion-des-dossiers/valider/plaintes/${slug.slug}`}>
+                                <CheckIcon/>  {"Valider"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <ExportIcon/> {"Exporter"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <PrintIcon/> {"Imprimer"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--danger`}>
+                            <button type='button'>
+                                <TrashIcon/> {"Supprimer"}
+                            </button>
+                        </li>
+                    </ul>);
     return (
-        <DossierLayout here={'list'}>
-            <FileDarianne actuel={'Aperçu d\' un dossier Plainte'}>
+        <DossierLayout actions={actions}>
+            <FileDarianne actuel={'Aperçu d\' une plainte'}>
                 <OldFileDariane link={'/'}>
                     Accueil
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers'}>
-                    Gestion des Dossiers
+                    Gestion des dossiers
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers/plaintes'}>
-                    Gestion des Dossiers Plaintes
+                    Plaintes
                 </OldFileDariane>
             </FileDarianne>
             <div className='sigepec-module-add__head is--large has--flex_between'>
-                <h1>Voir les informations</h1>
+                <h1>N° de la plainte 8800</h1>
             </div>
             <div className='sigepec-module-add is--large has--flex_between'>
                 <div className="sigepec-module-add__section">
@@ -64,22 +106,9 @@ const PlainteVoir = ({title}) => {
                 <div className="sigepec-module-add__section">
                     
                     <div className="sigepec-module-add-section__container">
-                        <h2>Que souhaitez-vous faire</h2>
+                        <h2>Le saviez-vous?</h2>
                         <div className='sigepec-h-bar'></div>
-                        <div className='sigepec-module-add-files'>
-                            <Link to={`/gestion-des-dossiers/modifier/plaintes/${params.slug}`} className="sigepec-module-list__action is--large has--flex">
-                                <EditIcon/> <span>Modifier les informations du dossier</span>
-                            </Link>
-                            <Link to={`/gestion-des-dossiers/valider/plaintes/${params.slug}`} className="sigepec-module-list__action is--large has--flex">
-                                <CheckIcon/> <span>Valider le dossier</span>
-                            </Link>
-                            <button type='button' className='sigepec-module-list__action is--large has--flex'>
-                                <SavedIcon/> <span>Archiver le dossier</span>
-                            </button>
-                            <button type='button' className='sigepec-module-list__action is--large has--flex'>
-                                <TrashIcon/> <span>Supprimer le dossier</span>
-                            </button>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

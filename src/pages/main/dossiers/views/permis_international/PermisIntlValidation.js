@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import AddIcon from '../../../../../assets/icons/AddIcon';
 import CancelIcon from '../../../../../assets/icons/CancelIcon';
+import EditIcon from '../../../../../assets/icons/EditIcon';
+import ExportIcon from '../../../../../assets/icons/ExportIcon';
+import DossierIcon from '../../../../../assets/icons/ic/DossierIcon';
+import ListIcon from '../../../../../assets/icons/ListIcon';
+import PrintIcon from '../../../../../assets/icons/PrintIcon';
+import TrashIcon from '../../../../../assets/icons/TrashIcon';
 import FileDarianne from '../../../../../components/card/FileDarianne';
 import FilePreview from '../../../../../components/card/FilePreview';
 import OldFileDariane from '../../../../../components/card/OldFileDariane';
@@ -11,7 +18,7 @@ import DossierLayout from '../../DossierLayout';
 
 const PermisIntlValidation = ({title}) => {
     document.querySelector('title').innerHTML = title + ' | SIGEPEC';
-    let params = useParams(); 
+    let slug = useParams(); 
     let navigate = useNavigate();
     const [numPermis, setNumPermis] = useState('');
     const [reference, setReference] = useState('');
@@ -55,9 +62,46 @@ const PermisIntlValidation = ({title}) => {
     }
 
     
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/permis-internationaux"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/creer/permis-internationaux"}>
+                                <AddIcon/>  {"Ajouter"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={`/gestion-des-dossiers/voir/permis-internationaux/${slug.slug}`}>
+                                <DossierIcon/>  {"Editer"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={`/gestion-des-dossiers/modifier/permis-internationaux/${slug.slug}`}>
+                                <EditIcon/>  {"Modifier"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <ExportIcon/> {"Exporter"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <PrintIcon/> {"Imprimer"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--danger`}>
+                            <button type='button'>
+                                <TrashIcon/> {"Supprimer"}
+                            </button>
+                        </li>
+                    </ul>);
     return (
-        <DossierLayout here={'validation'}>
-            <FileDarianne actuel={'Validation d\'un dossier Permis internationaux'}>
+        <DossierLayout actions={actions}>
+            <FileDarianne actuel={'Validation d\'un permis international'}>
                 <OldFileDariane link={'/'}>
                     Accueil
                 </OldFileDariane>
@@ -65,10 +109,7 @@ const PermisIntlValidation = ({title}) => {
                     Gestion des Dossiers
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers/permis-internationaux'}>
-                    Gestion des Dossiers Permis internationaux
-                </OldFileDariane>
-                <OldFileDariane link={'/gestion-des-dossiers/validation-de-dossier/permis-internationaux'}>
-                    Gestion des Dossier permis internationaux en attente de validation
+                    Permis internationaux
                 </OldFileDariane>
             </FileDarianne>
             <div className='sigepec-module-add__head is--large has--flex_between'>

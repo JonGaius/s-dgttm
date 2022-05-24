@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AddIcon from '../../../../../assets/icons/AddIcon';
+import BanIcon from '../../../../../assets/icons/BanIcon';
 import CancelIcon from '../../../../../assets/icons/CancelIcon';
 import CheckIcon from '../../../../../assets/icons/CheckIcon';
+import EditIcon from '../../../../../assets/icons/EditIcon';
+import ListIcon from '../../../../../assets/icons/ListIcon';
 import OptionIcon from '../../../../../assets/icons/OptionIcon';
 import SearcIcon from '../../../../../assets/icons/SearcIcon';
 import SortIcon from '../../../../../assets/icons/SortIcon';
@@ -556,13 +559,13 @@ const ProgrammationCode = ({title}) => {
                         <div className='sigepec-h-bar'></div>
                         <div className='sigepec-module-add-files'>
                             <button type='button' className='sigepec-module-list__action is--large has--flex' onClick={() => {editModal('edit-modal', number)}}>
-                                <CheckIcon/> <span>Modifier les informations de la programmation</span>
+                                <EditIcon/> <span>Modifier les informations de la programmation</span>
                             </button>
                             <Link to={`/gestion-des-examens/programmation/camdidats/${'slug'}`} className="sigepec-module-list__action is--large has--flex">
-                                <CheckIcon/> <span>Voir la liste des candidats</span>
+                                <ListIcon/> <span>Voir la liste des candidats</span>
                             </Link>
                             <button type='button' className='sigepec-module-list__action is--large has--flex'>
-                                <CheckIcon/> <span>Annuler la programmation</span>
+                                <BanIcon/> <span>Annuler la programmation</span>
                             </button>
                         </div>
                     </div>

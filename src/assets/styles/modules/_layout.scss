@@ -29,7 +29,7 @@
             a{
                 font-size: 22pt;
                 font-family: $sigepec-font-medium;
-                text-transform: uppercase;
+                //text-transform: uppercase;
             }
             span{
                 font-size: 14pt;
@@ -140,7 +140,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        width: 150px;
+        width: 90px;
         height: 100%;
         align-items: flex-end;
         .sigepec-layout-main-header__avatar{
@@ -295,11 +295,24 @@
                     background: none;
                     cursor: pointer;
                     text-align: left;
+                    display: flex;
+                    align-items: center;
+                    column-gap: 3px;
                 }
                 &:hover, &.is--active{
                     background: $sigepec-color-primaryAccent;
                     border: 0.25px solid rgba($color: $sigepec-color-primaryHover, $alpha: .6);
-                    a{
+                    a,button{
+                        color: $sigepec-color-text;
+                        &:hover{
+                            color: $sigepec-color-text;
+                        }
+                    }
+                }
+                &.is--danger{
+                    background: $sigepec-color-dangerAccent;
+                    border: 0.25px solid rgba($color: $sigepec-color-danger, $alpha: .6);
+                    a,button{
                         color: $sigepec-color-text;
                         &:hover{
                             color: $sigepec-color-text;

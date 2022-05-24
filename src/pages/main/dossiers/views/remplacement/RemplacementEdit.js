@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import AddIcon from '../../../../../assets/icons/AddIcon';
 import CancelIcon from '../../../../../assets/icons/CancelIcon';
+import CheckIcon from '../../../../../assets/icons/CheckIcon';
+import ExportIcon from '../../../../../assets/icons/ExportIcon';
+import DossierIcon from '../../../../../assets/icons/ic/DossierIcon';
+import ListIcon from '../../../../../assets/icons/ListIcon';
+import PrintIcon from '../../../../../assets/icons/PrintIcon';
+import TrashIcon from '../../../../../assets/icons/TrashIcon';
 import FileDarianne from '../../../../../components/card/FileDarianne';
 import FilePreview from '../../../../../components/card/FilePreview';
 import OldFileDariane from '../../../../../components/card/OldFileDariane';
@@ -11,7 +18,7 @@ import DossierLayout from '../../DossierLayout';
 
 const RemplacementEdit = ({title}) => {
     document.querySelector('title').innerHTML = title + ' | SIGEPEC';
-    let params = useParams();
+    let slug = useParams();
     // let navigate = useNavigate();
     const activeModal = (id) => {
         document.getElementById(id).classList.add('is--show');
@@ -21,29 +28,24 @@ const RemplacementEdit = ({title}) => {
     }
     let optionCategorie =[
         {
-            id: 1,
             value: 'PermisA',
-            name: 'Permis A'
+            label: 'Permis A'
         },
         {
-            id: 2,
             value: 'PermisA1',
-            name: 'Permis A1'
+            label: 'Permis A1'
         },
         {
-            id: 3,
             value: 'PermisB',
-            name: 'Permis B'
+            label: 'Permis B'
         },
         {
-            id: 4,
             value: 'PermisB1',
-            name: 'Permis B1'
+            label: 'Permis B1'
         },
         {
-            id: 5,
             value: 'PermisC',
-            name: 'Permis C'
+            label: 'Permis C'
         },
     ];
     const [numPermis, setNumPermis] = useState('');
@@ -107,17 +109,54 @@ const RemplacementEdit = ({title}) => {
     const changeScanMedical = (value) => {
         setScanMedical(value)
     }
+    const actions = (<ul className='sigepec-module__nav has--flex'>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/remplacement"}>
+                                <ListIcon/> {"Lister"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={"/gestion-des-dossiers/creer/remplacement"}>
+                                <AddIcon/>  {"Ajouter"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--active`}>
+                            <Link to={`/gestion-des-dossiers/voir/remplacement/${slug.slug}`}>
+                                <DossierIcon/>  {"Editer"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <Link to={`/gestion-des-dossiers/valider/remplacement/${slug.slug}`}>
+                                <CheckIcon/>  {"Valider"}
+                            </Link>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <ExportIcon/> {"Exporter"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item`}>
+                            <button type='button'>
+                                <PrintIcon/> {"Imprimer"}
+                            </button>
+                        </li>
+                        <li className={`sigepec-module-nav__item is--danger`}>
+                            <button type='button'>
+                                <TrashIcon/> {"Supprimer"}
+                            </button>
+                        </li>
+                    </ul>);
     return (
-        <DossierLayout here={'list'}>
-            <FileDarianne actuel={'Modification d\'un dossier Remplacement'}>
+        <DossierLayout actions={actions}>
+            <FileDarianne actuel={'Modification d\'un remplacement'}>
                 <OldFileDariane link={'/'}>
                     Accueil
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers'}>
-                    Gestion des Dossiers
+                    Gestion des dossiers
                 </OldFileDariane>
                 <OldFileDariane link={'/gestion-des-dossiers/remplacement'}>
-                    Gestion des Dossiers Remplacement
+                    Remplacement
                 </OldFileDariane>
             </FileDarianne>
             <div className='sigepec-module-add__head is--large has--flex_between'>
@@ -128,7 +167,7 @@ const RemplacementEdit = ({title}) => {
                 <div className="sigepec-module-add__section">
                     <div className="sigepec-module-add-section__container">
                         <div className='sigepec-module-add-section__box'>
-                            <h2>Informations personnelles du candidat</h2>
+                            <h2>Informations du dossier</h2>
                             <div className='sigepec-h-bar'></div>
                             <div className="sigepec-module-add-apercu__items has--flex_between is--large">
                                 <div className="sigepec-module-add-apercu__item is--large has--flex_between">
